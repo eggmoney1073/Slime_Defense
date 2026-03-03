@@ -100,7 +100,8 @@ public class LoadingSystem
 
         string sceneAddress = _sceneBaseAddress + sceneName.ToString() + ".unity";
 
-        LoadingSceneManager.Instance.ShowUI(_onSceneLoadCompleted);
+        //LoadingSceneManager.Instance.ShowUI(_onSceneLoadCompleted);
+        LoadingSceneManager.Instance.ShowUI();
         _sceneLoadHandle = Addressables.LoadSceneAsync(sceneAddress, LoadSceneMode.Additive);
         
 

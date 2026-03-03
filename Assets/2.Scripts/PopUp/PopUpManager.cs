@@ -73,7 +73,7 @@ public class PopUpManager : SingletonDontDestroyOnLoad<PopUpManager>
 
             LoadingSystem.InitializeAddressables(() =>
             {
-                InstancePopups();
+                //InstancePopups();
             });
             return;
         

@@ -25,7 +25,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     /// <summary>
     /// UI ∫∏¿Ã±‚
     /// </summary>
-    public void ShowUI(Action fadeOutCallBack)
+    public void ShowUI(Action fadeOutCallBack = null)
     {
 
         _fadeOutCallBack = fadeOutCallBack;
