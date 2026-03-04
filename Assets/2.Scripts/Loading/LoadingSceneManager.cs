@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 /// <summary>
 /// 로딩 씬을 관리하는 매니저
@@ -10,6 +12,8 @@ using UnityEngine.UI;
 /// 로딩씬은 언로드 하지 않고 계속 유지하므로 Update를 사용하지 않는다.
 public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
 {
+    [SerializeField]
+    Image _loadingBGImage;
     [SerializeField]
     Slider _loadingBar;
     [SerializeField]
@@ -27,7 +31,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     /// </summary>
     public void ShowUI(Action fadeOutCallBack = null)
     {
-
+        //_loadingBGImage.sprite = Addressables.LoadAssetAsync<Sprite>("LoadingBG");
         _fadeOutCallBack = fadeOutCallBack;
         StartCoroutine(Co_FadeIn(0.5f));
         _canvasGroup.blocksRaycasts = true;

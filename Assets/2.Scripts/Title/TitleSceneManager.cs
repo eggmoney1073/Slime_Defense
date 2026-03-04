@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleSceneManager : MonoBehaviour
 {
@@ -11,10 +12,8 @@ public class TitleSceneManager : MonoBehaviour
 
     void Start()
     {
-        _startButton.SetActive(false);
-        _touchToStartUI.SetActive(false);
-
-        LoadingSystem.InitializeAddressables(AddressablesInitializeOnComplete);        
+        _startButton.SetActive(true);
+        _touchToStartUI.SetActive(true);
     }
 
     /// <summary>
@@ -22,16 +21,7 @@ public class TitleSceneManager : MonoBehaviour
     /// </summary>
     public void TouchToStart()
     {
-        LoadingSystem.LoadAddressableLoadingScene();
-    }
-
-
-    /// <summary>
-    /// 초기화 완료 콜백
-    /// </summary>
-    void AddressablesInitializeOnComplete()
-    {
-        _startButton.SetActive(true);
-        _touchToStartUI.SetActive(true);
+        //LoadingSystem.LoadAddressableLoadingScene();
+        SceneManager.LoadScene(LoadingSystem.SceneName.Scene_DownLoad.ToString());
     }
 }

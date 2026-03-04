@@ -12,6 +12,7 @@ public class LoadingSystem
     {
         None = -1,
         Scene_Title,
+        Scene_DownLoad,
         Scene_Loading,
         Scene_MainMenu,
         Scene_GameLobby,
@@ -78,7 +79,8 @@ public class LoadingSystem
         // Title 씬은 로드하지 않음
         // Loading 씬은 단독으로 로드
         if (sceneName == SceneName.None || sceneName == SceneName.Max 
-            || sceneName == SceneName.Scene_Title || sceneName == SceneName.Scene_Loading)
+            || sceneName == SceneName.Scene_Title || sceneName == SceneName.Scene_Loading
+            || sceneName == SceneName.Scene_DownLoad)
         {
             Debug.LogError("Invalid scene name.");
             return;

@@ -461,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17c7673b159ebe479017723bc153d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadingBGImage: {fileID: 1879026772}
   _loadingBar: {fileID: 223077505}
   _titleImage: {fileID: 1586749240}
   _touchToStartText: {fileID: 819903926}
