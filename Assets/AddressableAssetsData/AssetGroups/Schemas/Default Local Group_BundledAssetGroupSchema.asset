@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: Texture_BundledAssetGroupSchema
+  m_Name: Default Local Group_BundledAssetGroupSchema
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema
-  m_Group: {fileID: 11400000, guid: e5c3f621b37edbd449eb8eb415156d7e, type: 2}
+  m_Group: {fileID: 11400000, guid: c0a800a4ad2042a4abd7217c2c6c56b6, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1
@@ -35,9 +35,9 @@ MonoBehaviour:
   m_RedirectLimit: -1
   m_RetryCount: 0
   m_BuildPath:
-    m_Id: 020f6d8ff8d225344b940414e167043b
+    m_Id: 37bc4f2c69173b54d82ea9199c68895d
   m_LoadPath:
-    m_Id: a008e59df937e0c41973966b7b4863d4
+    m_Id: 5a4d43413c49f7140a0272b51a6257d2
   m_BundleMode: 0
   m_AssetBundleProviderType:
     m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

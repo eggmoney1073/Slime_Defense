@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Scene
+  m_Name: Default Local Group
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Scene
-  m_GUID: baeaa81fc3f657b47b9494ae5fab57d3
+  m_GroupName: Default Local Group
+  m_GUID: 37b4090406f1f9f4bbb3620ffcc82fd7
   m_SerializeEntries:
   - m_GUID: 7e9901de17d20e240b04363f96848598
     m_Address: Assets/1.Scenes
@@ -21,9 +21,15 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dea0944a499da07448145db47c500ae9
+    m_Address: Assets/8.Texture
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 6257771006ce86a4397e38a46fd17035, type: 2}
+  m_Settings: {fileID: 11400000, guid: 74306075437b1944cb882d495674e078, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3973934ec958d8d41a3ebc515844583d, type: 2}
-    - {fileID: 11400000, guid: 6bb073c48defd734899b18c71a2c95f6, type: 2}
+    - {fileID: 11400000, guid: 7704e2c45e0df4740bd80f0d85a5c32a, type: 2}
+    - {fileID: 11400000, guid: 539734543d4a505429b29736c637bdf5, type: 2}
