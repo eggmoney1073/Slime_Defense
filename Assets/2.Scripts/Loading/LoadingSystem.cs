@@ -48,10 +48,10 @@ public class LoadingSystem
         if (_isInitializing)
             return;
 
-        AsyncOperationHandle  hndle = Addressables.InitializeAsync();
+        AsyncOperationHandle  handle = Addressables.InitializeAsync();
         _isInitializing = true;
 
-        hndle.Completed += result =>
+        handle.Completed += result =>
         {
             if (result.Status == AsyncOperationStatus.Succeeded)
             {

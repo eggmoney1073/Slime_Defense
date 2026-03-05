@@ -15,7 +15,6 @@ public class DownLoadManager : MonoBehaviour
     long patchSize;
     Dictionary<string, long> _patchMap = new Dictionary<string, long>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _downLoadWindow.SetActive(false);

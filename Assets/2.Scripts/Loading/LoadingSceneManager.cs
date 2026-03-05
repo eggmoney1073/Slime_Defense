@@ -26,6 +26,22 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     CanvasGroup _canvasGroup;
     Action _fadeOutCallBack;
 
+
+
+
+    #region [ Loading BG Download ]
+
+    public void SetLoadingBG()
+    {
+        //StartCoroutine(Co_SetLoadingBG());
+    }
+
+
+    #endregion
+
+
+    #region [ Loading Fuction ]    
+
     /// <summary>
     /// UI ∫∏¿Ã±‚
     /// </summary>
@@ -88,6 +104,8 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
         _touchToStartText.SetActive(true);
         _touchToStartButton.SetActive(true);
     }
+    #endregion
+
 
     void Start()
     {
