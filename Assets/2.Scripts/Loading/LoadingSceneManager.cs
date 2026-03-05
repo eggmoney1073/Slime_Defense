@@ -23,21 +23,10 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     [SerializeField]
     GameObject _touchToStartButton;
 
+
+
     CanvasGroup _canvasGroup;
     Action _fadeOutCallBack;
-
-
-
-
-    #region [ Loading BG Download ]
-
-    public void SetLoadingBG()
-    {
-        //StartCoroutine(Co_SetLoadingBG());
-    }
-
-
-    #endregion
 
 
     #region [ Loading Fuction ]    
@@ -47,10 +36,16 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     /// </summary>
     public void ShowUI(Action fadeOutCallBack = null)
     {
-        //_loadingBGImage.sprite = Addressables.LoadAssetAsync<Sprite>("LoadingBG");
+        SetRandomBG();
         _fadeOutCallBack = fadeOutCallBack;
         StartCoroutine(Co_FadeIn(0.5f));
         _canvasGroup.blocksRaycasts = true;
+    }
+
+    void SetRandomBG()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, 3);
+        _loadingBGImage.sprite = LoadingResourceManager.GetLoadingBG(randomIndex);
     }
 
     public void HideUI()

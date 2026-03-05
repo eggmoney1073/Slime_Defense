@@ -31,6 +31,7 @@ public class DownLoadManager : MonoBehaviour
     public void Button_DownLoad()
     {
         StartCoroutine(Co_DownloadAssets());
+        
     }
 
     public void Button_GoNext()
@@ -62,7 +63,7 @@ public class DownLoadManager : MonoBehaviour
         else
         {
             Debug.Log("No Download");
-            _completeWindow.SetActive(true);
+            CompleteAll();
         }
     }
 
@@ -98,7 +99,19 @@ public class DownLoadManager : MonoBehaviour
         }
 
         Debug.Log("All downloads completed.");
+        CompleteAll();
+    }
+    
+    void CompleteAll()
+    {
         _downLoadWindow.SetActive(false);
         _completeWindow.SetActive(true);
+        StartCoroutine(Co_GetLoadingResource());
+    }
+
+    IEnumerator Co_GetLoadingResource()
+    {
+        LoadingResourceManager.DownLoadAllSprites();
+        yield return null;
     }
 }
