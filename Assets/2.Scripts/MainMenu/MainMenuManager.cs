@@ -26,6 +26,6 @@ public class MainMenuManager : SingletonGameobject<MainMenuManager>
     {
         LoadingSystem._onSceneLoadCompleted -= OnLoadMainMenuSceneCompleted;
         LoadingSystem.UnloadCurrentScene();
-        LoadingSystem.LoadAddressableScene(LoadingSystem.SceneName.Scene_GameLobby);
+        LoadingSystem.LoadAddressableScene(LoadingSystem.SceneName.Scene_Game);
     }
 }

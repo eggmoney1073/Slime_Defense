@@ -15,8 +15,7 @@ public class LoadingSystem
         Scene_DownLoad,
         Scene_Loading,
         Scene_MainMenu,
-        Scene_GameLobby,
-        Scene_GameField,
+        Scene_Game,
         Max
     }
 

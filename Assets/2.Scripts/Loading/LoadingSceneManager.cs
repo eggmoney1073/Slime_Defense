@@ -44,7 +44,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
 
     void SetRandomBG()
     {
-        int randomIndex = UnityEngine.Random.Range(0, 3);
+        int randomIndex = UnityEngine.Random.Range(0, LoadingResourceManager._loadingBGCount);
         _loadingBGImage.sprite = LoadingResourceManager.GetLoadingBG(randomIndex);
     }
 

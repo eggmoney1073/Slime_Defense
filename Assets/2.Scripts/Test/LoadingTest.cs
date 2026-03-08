@@ -6,7 +6,7 @@ public class LoadingTest : MonoBehaviour
     public void LoadScene()
     {
         LoadingSystem.UnloadCurrentScene();
-        LoadingSystem.LoadAddressableScene(LoadingSystem.SceneName.Scene_GameLobby);
+        LoadingSystem.LoadAddressableScene(LoadingSystem.SceneName.Scene_Game);
     }
 
     private void OnGUI()
