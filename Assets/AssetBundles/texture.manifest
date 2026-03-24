@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
 UnityVersion: 6000.3.9f1
-CRC: 2709452976
+CRC: 2155284415
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d2ea47695b04a0bb2a3a65e2201503a5
+    Hash: 76389b9a632dd5cf3edfa1a4458617e4
   TypeTreeHash:
     serializedVersion: 2
     Hash: bc9f87c7e64ff656997db0f2b2a91703
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 39eacb8eb982eb4c3652b34940ccbeec
+    Hash: 0c649bf91752b29bd2254084b3397b50
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -22,8 +22,10 @@ Assets:
 - Assets/8.Texture/Loading/LoadingSlime.png
 - Assets/8.Texture/Loading/MainMenu.png
 - Assets/8.Texture/Loading/TouchToStart.png
-- Assets/8.Texture/Loading/LoadingBG.png
+- Assets/8.Texture/Loading/BG/LoadingBG1.png
 - Assets/8.Texture/Loading/Title.png
+- Assets/8.Texture/Loading/BG/LoadingBG3.png
 - Assets/8.Texture/Loading/SlimeSurvival.png
 - Assets/8.Texture/Loading/UI_Button.png
+- Assets/8.Texture/Loading/BG/LoadingBG2.png
 Dependencies: []

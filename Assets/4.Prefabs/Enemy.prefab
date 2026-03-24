@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc02b389f780ab143a374d6758cd6ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Authoring
-  Speed: 3
+  Speed: 1
 --- !u!1 &3869825817452726372
 GameObject:
   m_ObjectHideFlags: 0
