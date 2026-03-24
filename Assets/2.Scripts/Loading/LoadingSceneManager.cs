@@ -22,6 +22,8 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     GameObject _touchToStartText;
     [SerializeField]
     GameObject _touchToStartButton;
+    [SerializeField]
+    GameObject _eventSystem;
 
 
 
@@ -40,6 +42,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
         _fadeOutCallBack = fadeOutCallBack;
         StartCoroutine(Co_FadeIn(0.5f));
         _canvasGroup.blocksRaycasts = true;
+        _eventSystem.SetActive(true);
     }
 
     void SetRandomBG()
@@ -98,6 +101,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
         // 로딩 완료
         _touchToStartText.SetActive(true);
         _touchToStartButton.SetActive(true);
+        _eventSystem.SetActive(false);
     }
     #endregion
 
