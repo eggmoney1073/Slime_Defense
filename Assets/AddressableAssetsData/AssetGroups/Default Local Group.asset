@@ -21,12 +21,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c446ffda43eff7f4a941582085da5031
-    m_Address: Assets/1.Scenes/Scene_SubGame.unity
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dea0944a499da07448145db47c500ae9
     m_Address: Assets/8.Texture
     m_ReadOnly: 0
