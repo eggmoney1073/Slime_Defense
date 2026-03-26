@@ -1,6 +1,7 @@
 using Unity.Entities;
 
-public struct WeaponTag : IComponentData, IEnableableComponent { }
+public struct WeaponTag : IComponentData { }
+public struct WeaponEnabledTag : IComponentData, IEnableableComponent { }
 
 public struct FireRate : IComponentData
 {
@@ -14,5 +15,12 @@ public struct RandomAimTag : IComponentData { }
 
 public struct ProjectilePrefab : IComponentData
 {
-    public Entity prefab;
+    public Entity projectile;
 }
+
+public struct WeaponPrefab : IBufferElementData
+{
+    public Entity weapon;
+}
+
+public struct WeaponSpawnerTag : IComponentData { }

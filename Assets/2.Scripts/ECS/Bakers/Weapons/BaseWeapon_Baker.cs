@@ -13,6 +13,12 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
             timer = 0f
         });
 
-        AddComponent(entity, new ManualAimTag { });
+        AddComponent<WeaponTag>(entity);
+        AddComponent<ManualAimTag>(entity);
+
+        AddComponent<WeaponEnabledTag>(entity);
+        SetComponentEnabled<WeaponEnabledTag>(entity, true);
+
+        Debug.Log("기본 무기 베이커 완료");
     }
 }

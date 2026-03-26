@@ -24,9 +24,8 @@ partial struct ECS_EnemySpawnSystem : ISystem
             return;
         }
 
-        // ECB 생성
-        EntityCommandBuffer ecb =
-            new EntityCommandBuffer(Allocator.Temp);
+        // 버퍼 생성
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
         foreach (RefRW<ECS_EnemySpawner> spawner in SystemAPI.Query<RefRW<ECS_EnemySpawner>>())
         {
@@ -39,21 +38,18 @@ partial struct ECS_EnemySpawnSystem : ISystem
                     spawner.ValueRW.Timer = 0f;
 
                     // Entity 생성 (ECB)
-                    Entity enemy =
-                        ecb.Instantiate(spawner.ValueRO.EnemyPrefab);
+                    Entity enemy = ecb.Instantiate(spawner.ValueRO.EnemyPrefab);
 
                     float3 spawnPos = waypoints[0].Position;
 
                     // 위치 설정
-                    ecb.SetComponent(enemy,
-                        LocalTransform.FromPosition(spawnPos));
+                    ecb.SetComponent(enemy, LocalTransform.FromPosition(spawnPos));
 
-                    // Path 연결 (중요)
-                    ecb.AddComponent(enemy,
-                        new ECS_PathReference
-                        {
-                            path = pathEntity
-                        });
+                    // Path 연결
+                    ecb.AddComponent(enemy, new ECS_PathReference
+                    {
+                        path = pathEntity
+                    });
 
                     spawner.ValueRW.SpawnCount += 1;
                 }
