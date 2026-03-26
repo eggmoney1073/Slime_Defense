@@ -3,22 +3,22 @@ using Unity.Mathematics;
 
 public struct ProjectileTag : IComponentData { }
 
-public struct Direction
+public struct Direction : IComponentData
 {
     public float3 direction;
 }
 
-public struct DamageData
+public struct DamageData : IComponentData
 {
     public float damage;
 }
 
-public struct LifetimeData
+public struct LifetimeData : IComponentData
 {
     public float remainTime;
 }
 
-struct PierceData
+struct PierceData : IComponentData
 {
     public int remainCount;
 }
