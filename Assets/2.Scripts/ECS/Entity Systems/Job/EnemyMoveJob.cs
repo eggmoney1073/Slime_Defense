@@ -1,7 +1,10 @@
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
+[BurstCompile]
+[WithAll(typeof(EnemyTag))]
 public partial struct EnemyMoveJob : IJobEntity
 {
     public float deltaTime;

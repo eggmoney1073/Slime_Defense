@@ -28,6 +28,11 @@ class ECS_Projectile_Baker : Baker<Projectile_Authoring>
             moveSpeed = authoring.Speed
         });
 
+        AddComponent(entity, new CollisionRadius
+        {
+            radius = 1f
+        });
+
         AddComponent<ProjectileTag>(entity);
     }
 }

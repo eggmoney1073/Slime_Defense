@@ -19,6 +19,11 @@ public class ECS_Enemy_Baker : Baker<Enemy_Authoring>
             currentIndex = 1
         });
 
+        AddComponent(entity, new CollisionRadius
+        {
+            radius = 1f
+        });
+
         //Debug.Log("Enemy Bake Complete");
     }
 }
