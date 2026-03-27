@@ -11,14 +11,14 @@ public class ECS_Enemy_Baker : Baker<Enemy_Authoring>
 
         AddComponent(entity, new ECS_MoveData
         {
-            Speed = authoring.Speed
+            moveSpeed = authoring.Speed
         });
 
         AddComponent(entity, new ECS_WayPointFollower
         {
-            CurrentIndex = 1
+            currentIndex = 1
         });
 
-        Debug.Log("Enemy Bake Complete");
+        //Debug.Log("Enemy Bake Complete");
     }
 }

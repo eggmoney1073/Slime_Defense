@@ -11,11 +11,11 @@ class ECS_EnemySpawner_Baker : Baker<EnemySpawner_Authoring>
 
         AddComponent(entity, new ECS_EnemySpawner
         {
-            EnemyPrefab = prefab,
-            Timer = 0f,
-            SpawnInterval = authoring.SpawnInterval,
-            SpawnCount = 0,
-            MaxSpawnCount = authoring.MaxSpawnCount
+            enemyPrefab = prefab,
+            timer = 0f,
+            spawnInterval = authoring.SpawnInterval,
+            spawnCount = 0,
+            maxSpawnCount = authoring.MaxSpawnCount
         });
     }
 }

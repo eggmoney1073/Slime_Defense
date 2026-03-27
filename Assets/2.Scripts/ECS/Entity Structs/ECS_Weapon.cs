@@ -15,12 +15,12 @@ public struct RandomAimTag : IComponentData { }
 
 public struct ProjectilePrefab : IComponentData
 {
-    public Entity projectile;
+    public Entity projectileEntity;
 }
 
 public struct WeaponPrefab : IBufferElementData
 {
-    public Entity weapon;
+    public Entity weaponEntity;
 }
 
 public struct WeaponSpawnerTag : IComponentData { }

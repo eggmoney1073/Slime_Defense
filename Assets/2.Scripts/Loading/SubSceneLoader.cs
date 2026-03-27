@@ -25,6 +25,6 @@ public class SubSceneLoader : MonoBehaviour
 
         //_subScene.SceneAsset = SceneSystem.GetSceneEntity(world.Unmanaged, guid);
         var query = world.EntityManager.CreateEntityQuery(typeof(LocalTransform));
-        Debug.Log("Entity count: " + query.CalculateEntityCount());
+        //Debug.Log("Entity count: " + query.CalculateEntityCount());
     }
 }

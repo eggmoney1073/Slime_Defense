@@ -7,8 +7,6 @@ partial struct ECS_WeaponSpawnSystem : ISystem
 
     public void OnCreate(ref SystemState state)
     {
-        Debug.Log("OnCreate");
-
         _isInitialized = false;
     }
 
@@ -25,10 +23,10 @@ partial struct ECS_WeaponSpawnSystem : ISystem
         {
             for (int i = 0; i < prefabBuffer.Length; i++)
             {
-                Entity weaponEntity = prefabBuffer[i].weapon;
+                Entity weaponEntity = prefabBuffer[i].weaponEntity;
 
                 entityCommandBuffer.Instantiate(weaponEntity);
-                Debug.Log("Instantiate");
+                //Debug.Log("Instantiate");
             }
         }
 

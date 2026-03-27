@@ -29,18 +29,18 @@ partial struct ECS_EnemySpawnSystem : ISystem
 
         foreach (RefRW<ECS_EnemySpawner> spawner in SystemAPI.Query<RefRW<ECS_EnemySpawner>>())
         {
-            if (spawner.ValueRO.SpawnCount < spawner.ValueRO.MaxSpawnCount)
+            if (spawner.ValueRO.spawnCount < spawner.ValueRO.maxSpawnCount)
             {
-                spawner.ValueRW.Timer += deltaTime;
+                spawner.ValueRW.timer += deltaTime;
 
-                if (spawner.ValueRO.Timer >= spawner.ValueRO.SpawnInterval)
+                if (spawner.ValueRO.timer >= spawner.ValueRO.spawnInterval)
                 {
-                    spawner.ValueRW.Timer = 0f;
+                    spawner.ValueRW.timer = 0f;
 
                     // Entity 생성 (ECB)
-                    Entity enemy = ecb.Instantiate(spawner.ValueRO.EnemyPrefab);
+                    Entity enemy = ecb.Instantiate(spawner.ValueRO.enemyPrefab);
 
-                    float3 spawnPos = waypoints[0].Position;
+                    float3 spawnPos = waypoints[0].nodePosition;
 
                     // 위치 설정
                     ecb.SetComponent(enemy, LocalTransform.FromPosition(spawnPos));
@@ -51,7 +51,7 @@ partial struct ECS_EnemySpawnSystem : ISystem
                         path = pathEntity
                     });
 
-                    spawner.ValueRW.SpawnCount += 1;
+                    spawner.ValueRW.spawnCount += 1;
                 }
             }
         }

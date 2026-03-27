@@ -5,7 +5,7 @@ public struct ProjectileTag : IComponentData { }
 
 public struct Direction : IComponentData
 {
-    public float3 direction;
+    public float3 moveDirection;
 }
 
 public struct DamageData : IComponentData

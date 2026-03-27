@@ -1,15 +1,11 @@
 using UnityEngine;
 
-public class Enemy_PathMaker : MonoBehaviour
+public class OOP_PathMaker : MonoBehaviour
 {
     [SerializeField]
     Transform[] _pathArray;
 
-    public Transform[] GetPathArray()
-    {
-        return _pathArray; 
-    }
-
+    public Transform[] PathArray { get { return _pathArray; } }
 
     private void OnDrawGizmos()
     {

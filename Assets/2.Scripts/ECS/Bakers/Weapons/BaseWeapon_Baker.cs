@@ -13,12 +13,19 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
             timer = 0f
         });
 
+        Entity projectile = GetEntity(authoring.ProjectilePrefab, TransformUsageFlags.Dynamic);
+
+        AddComponent(entity, new ProjectilePrefab
+        {
+            projectileEntity = projectile
+        });
+
         AddComponent<WeaponTag>(entity);
         AddComponent<ManualAimTag>(entity);
 
         AddComponent<WeaponEnabledTag>(entity);
         SetComponentEnabled<WeaponEnabledTag>(entity, true);
 
-        Debug.Log("기본 무기 베이커 완료");
+        //Debug.Log("기본 무기 베이커 완료");
     }
 }

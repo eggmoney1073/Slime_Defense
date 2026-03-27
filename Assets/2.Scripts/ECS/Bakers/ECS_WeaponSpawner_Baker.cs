@@ -16,10 +16,10 @@ class ECS_WeaponSpawner_Baker : Baker<WeaponSpawner_Authoring>
 
             weaponPrefabs.Add(new WeaponPrefab
             {
-                weapon = weaponPrefab
+                weaponEntity = weaponPrefab
             });
         }
 
-        Debug.Log("무기 스포너 베이커 완료");
+        //Debug.Log("무기 스포너 베이커 완료");
     }
 }

@@ -20,13 +20,13 @@ public class ECS_PathBaker : Baker<Enemy_PathMaker>
             {
                 buffer.Add(new ECS_WayPoint
                 {
-                    Position = path[i].position
+                    nodePosition = path[i].position
                 });
 
                 i++;
             }
         }
 
-        Debug.Log("ECS_PathBake Complete");
+        //Debug.Log("ECS_PathBake Complete");
     }
 }

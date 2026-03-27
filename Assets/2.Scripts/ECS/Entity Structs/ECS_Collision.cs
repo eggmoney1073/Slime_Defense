@@ -2,5 +2,5 @@ using Unity.Entities;
 
 public struct CollisionRadius : IComponentData
 {
-    public float Value;
+    public float radius;
 }
