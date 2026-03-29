@@ -21,7 +21,7 @@ public class ECS_Enemy_Baker : Baker<Enemy_Authoring>
 
         AddComponent(entity, new CollisionRadius
         {
-            radius = 1f
+            radius = authoring.Radius
         });
 
         //Debug.Log("Enemy Bake Complete");

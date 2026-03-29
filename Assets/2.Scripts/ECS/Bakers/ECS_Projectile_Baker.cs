@@ -10,7 +10,7 @@ class ECS_Projectile_Baker : Baker<Projectile_Authoring>
 
         AddComponent(entity, new Direction
         {
-            moveDirection = float3.zero
+            moveDirection = new float3(1, 0, 0),
         });
 
         AddComponent(entity, new DamageData
@@ -30,7 +30,7 @@ class ECS_Projectile_Baker : Baker<Projectile_Authoring>
 
         AddComponent(entity, new CollisionRadius
         {
-            radius = 1f
+            radius = authoring.Radius
         });
 
         AddComponent<ProjectileTag>(entity);

@@ -1,8 +1,14 @@
 using Unity.Entities;
-using UnityEngine;
 
 partial struct ECS_ManualFireSystem : ISystem
 {
+    EntityQuery projectileQuery;
+
+    public void OnCreate(ref SystemState state)
+    {
+        projectileQuery = state.GetEntityQuery(ComponentType.ReadOnly<ProjectileTag>());
+    }
+
     public void OnUpdate(ref SystemState state)
     {
         EntityCommandBuffer entityCommandBuffer = new EntityCommandBuffer(Unity.Collections.Allocator.Temp);
@@ -22,12 +28,12 @@ partial struct ECS_ManualFireSystem : ISystem
                 fireData.ValueRW.timer = 0f;
 
                 entityCommandBuffer.Instantiate(projectile.ValueRO.projectileEntity);
-
-                Debug.Log("Fire!");
             }
         }
 
         entityCommandBuffer.Playback(state.EntityManager);
         entityCommandBuffer.Dispose();
+        int projectileCount = projectileQuery.CalculateEntityCount();
+        ProjectileCount.SetCount(projectileCount);
     }
 }

@@ -7,6 +7,13 @@ using UnityEngine;
 
 partial struct ECS_EnemySpawnSystem : ISystem
 {
+    EntityQuery enemyQuery;
+
+    public void OnCreate(ref SystemState state)
+    {
+        enemyQuery = state.GetEntityQuery(ComponentType.ReadOnly<EnemyTag>());
+    }
+
     public void OnUpdate(ref SystemState state)
     {
         float deltaTime = SystemAPI.Time.DeltaTime;
@@ -59,6 +66,8 @@ partial struct ECS_EnemySpawnSystem : ISystem
         // 마지막에 적용
         ecb.Playback(state.EntityManager);
         ecb.Dispose();
+
+        EnemyCount.SetCount(enemyQuery.CalculateEntityCount());
     }
 
 }
