@@ -21,4 +21,14 @@ public sealed class InGameInputHandler : InputActions.IInGameActions
             OnPauseAction?.Invoke();
         }
     }
+
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        float x = context.ReadValue<Vector2>().x;
+        float z = context.ReadValue<Vector2>().y;
+
+        Debug.Log($"Aim input: x={x}, z={z}");
+
+        //AimDirectionBridge.SetAimDirection(x, z);
+    }
 }

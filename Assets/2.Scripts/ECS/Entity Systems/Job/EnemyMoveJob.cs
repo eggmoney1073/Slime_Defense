@@ -13,7 +13,7 @@ public partial struct EnemyMoveJob : IJobEntity
     public BufferLookup<ECS_WayPoint> wayPointBufferLookup;
 
     public void Execute(ref LocalTransform transform, ref ECS_WayPointFollower follower, 
-                        in ECS_PathReference pathReference, in ECS_MoveData moveData)
+                        in ECS_PathReference pathReference, in ECS_MoveData moveData, in ECS_EntityIndex indexRef)
     {
         if(!wayPointBufferLookup.HasBuffer(pathReference.path))
         {
@@ -23,10 +23,12 @@ public partial struct EnemyMoveJob : IJobEntity
         DynamicBuffer<ECS_WayPoint> wayPoints = wayPointBufferLookup[pathReference.path];
         if (wayPoints.Length > 0)
         {
-            int index = follower.currentIndex;
+            int currentIndex = follower.currentIndex;
 
             float3 currentPosition = transform.Position;
-            float3 destPosition = wayPoints[index].nodePosition;
+            float3 destPosition = wayPoints[currentIndex].nodePosition;
+            destPosition.z += indexRef.index * 0.001f;
+            
             float speed = moveData.moveSpeed;
 
             float3 direction = destPosition - currentPosition;
@@ -41,7 +43,7 @@ public partial struct EnemyMoveJob : IJobEntity
 
             if (distSq < 0.1f * 0.1f)
             {
-                int nextIndex = index + 1;
+                int nextIndex = currentIndex + 1;
 
                 if (nextIndex >= wayPoints.Length)
                 {

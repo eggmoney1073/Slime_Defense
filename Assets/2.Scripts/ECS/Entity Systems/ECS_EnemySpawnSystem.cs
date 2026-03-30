@@ -8,6 +8,7 @@ using UnityEngine;
 partial struct ECS_EnemySpawnSystem : ISystem
 {
     EntityQuery enemyQuery;
+    int spawnIndex;
 
     public void OnCreate(ref SystemState state)
     {
@@ -48,9 +49,16 @@ partial struct ECS_EnemySpawnSystem : ISystem
                     Entity enemy = ecb.Instantiate(spawner.ValueRO.enemyPrefab);
 
                     float3 spawnPos = waypoints[0].nodePosition;
+                    spawnPos.z += spawnIndex * 0.001f;
 
                     // 위치 설정
                     ecb.SetComponent(enemy, LocalTransform.FromPosition(spawnPos));
+
+                    ecb.AddComponent(enemy, new ECS_EntityIndex
+                    {
+                        index = spawnIndex
+                    });
+                    spawnIndex++;
 
                     // Path 연결
                     ecb.AddComponent(enemy, new ECS_PathReference

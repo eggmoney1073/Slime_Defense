@@ -8,10 +8,10 @@ class ECS_Projectile_Baker : Baker<Projectile_Authoring>
     {
         Entity entity = GetEntity(TransformUsageFlags.Dynamic);
 
-        AddComponent(entity, new Direction
-        {
-            moveDirection = new float3(1, 0, 0),
-        });
+        //AddComponent(entity, new Direction
+        //{
+        //    moveDirection = float3.zero
+        //});
 
         AddComponent(entity, new DamageData
         {
