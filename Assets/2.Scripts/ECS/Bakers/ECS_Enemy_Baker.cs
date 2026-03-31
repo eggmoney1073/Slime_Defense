@@ -7,7 +7,9 @@ public class ECS_Enemy_Baker : Baker<Enemy_Authoring>
     {
         Entity entity = GetEntity(TransformUsageFlags.Dynamic);
 
-        AddComponent(entity, new EnemyTag());
+        AddComponent<EnemyTag>(entity);
+        AddComponent<EnemyDeadTag>(entity);
+        SetComponentEnabled<EnemyDeadTag>(entity, false);
 
         AddComponent(entity, new ECS_MoveData
         {

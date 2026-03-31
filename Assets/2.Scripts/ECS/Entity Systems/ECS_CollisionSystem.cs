@@ -14,7 +14,7 @@ partial struct ECS_CollisionSystem : ISystem
     {
         int capacity = 1024;
 
-        _gridMap = new NativeParallelMultiHashMap<int, Entity>(capacity, Allocator.TempJob);
+        _gridMap = new NativeParallelMultiHashMap<int, Entity>(capacity, Allocator.Persistent);
     }
 
     //[BurstCompile]

@@ -23,8 +23,8 @@ public partial struct CollisionJob : IJobEntity
     {
         float3 position = transform.Position;
 
-        int axisX = (int)math.floor(position.x / cellSize);
-        int axisY = (int)math.floor(position.z / cellSize);
+        int axisX = (int)math.floor(position.x / cellSize) + (gridWidth / 2);
+        int axisY = (int)math.floor(position.z / cellSize) + (gridWidth / 2);
 
         int index = axisX + gridWidth * axisY;
 

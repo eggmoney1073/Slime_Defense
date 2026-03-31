@@ -18,7 +18,7 @@ public struct LifetimeData : IComponentData
     public float remainTime;
 }
 
-struct PierceData : IComponentData
+public struct PierceData : IComponentData
 {
     public int remainCount;
 }
