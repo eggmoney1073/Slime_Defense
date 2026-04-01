@@ -22,3 +22,5 @@ public struct PierceData : IComponentData
 {
     public int remainCount;
 }
+
+public struct ProjectileDeadTag : IComponentData, IEnableableComponent { }
