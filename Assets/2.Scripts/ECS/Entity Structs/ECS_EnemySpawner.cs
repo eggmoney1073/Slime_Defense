@@ -7,4 +7,5 @@ public struct ECS_EnemySpawner : IComponentData
     public float spawnInterval;
     public int spawnCount;
     public int maxSpawnCount;
+    public float enemyHealthSale;
 }

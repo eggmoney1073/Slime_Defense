@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f4585ab7de8ab459815a7bd1b13ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapon_Authoring
-  ProjectilePrefab: {fileID: 7265366914958867069, guid: 81832afc5c416074e95c190503c5d0e4, type: 3}
-  Cooldown: 1
+  projectilePrefab: {fileID: 7265366914958867069, guid: 81832afc5c416074e95c190503c5d0e4, type: 3}
+  cooldown: 1
+  damage: 100

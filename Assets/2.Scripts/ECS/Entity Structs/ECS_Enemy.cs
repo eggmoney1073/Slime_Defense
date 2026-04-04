@@ -6,5 +6,5 @@ public struct EnemyDeadTag : IComponentData , IEnableableComponent { }
 
 public struct EnemyHealth : IComponentData 
 {
-    public float Health;
+    public float health;
 }

@@ -5,6 +5,9 @@ using Unity.Jobs;
 using Unity.Transforms;
 using static UnityEditor.Experimental.GraphView.Port;
 
+[BurstCompile]
+[UpdateInGroup(typeof(JudgementSystemGroup))]
+[UpdateAfter(typeof(ECS_GridBuildSystem))]
 partial struct ECS_CollisionSystem : ISystem
 {
     NativeParallelMultiHashMap<int, Entity> _gridMap;

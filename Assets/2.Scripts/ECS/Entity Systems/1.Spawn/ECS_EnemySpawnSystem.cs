@@ -5,14 +5,17 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
+[BurstCompile]
+[UpdateInGroup(typeof(SpawnSystemGroup))]
 partial struct ECS_EnemySpawnSystem : ISystem
 {
-    EntityQuery enemyQuery;
-    int spawnIndex;
+    EntityQuery _enemyQuery;
+    int _spawnIndex;
 
     public void OnCreate(ref SystemState state)
     {
-        enemyQuery = state.GetEntityQuery(ComponentType.ReadOnly<EnemyTag>());
+        _enemyQuery = state.GetEntityQuery(ComponentType.ReadOnly<EnemyTag>());
+        _spawnIndex = 0;
     }
 
     public void OnUpdate(ref SystemState state)
@@ -49,21 +52,26 @@ partial struct ECS_EnemySpawnSystem : ISystem
                     Entity enemy = ecb.Instantiate(spawner.ValueRO.enemyPrefab);
 
                     float3 spawnPos = waypoints[0].nodePosition;
-                    spawnPos.z += spawnIndex * 0.001f;
+                    spawnPos.z += _spawnIndex * 0.001f;
 
                     // 위치 설정
                     ecb.SetComponent(enemy, LocalTransform.FromPosition(spawnPos));
 
                     ecb.AddComponent(enemy, new ECS_EntityIndex
                     {
-                        index = spawnIndex
+                        index = _spawnIndex
                     });
-                    spawnIndex++;
+                    _spawnIndex++;
 
                     // Path 연결
                     ecb.AddComponent(enemy, new ECS_PathReference
                     {
                         path = pathEntity
+                    });
+
+                    ecb.AddComponent(enemy, new EnemyHealth
+                    {
+                        health = 100f + (_spawnIndex * 100f * spawner.ValueRO.enemyHealthSale)
                     });
 
                     spawner.ValueRW.spawnCount += 1;
@@ -75,7 +83,7 @@ partial struct ECS_EnemySpawnSystem : ISystem
         ecb.Playback(state.EntityManager);
         ecb.Dispose();
 
-        EnemyCount.SetCount(enemyQuery.CalculateEntityCount());
+        EnemyCount.SetCount(_enemyQuery.CalculateEntityCount());
     }
 
 }

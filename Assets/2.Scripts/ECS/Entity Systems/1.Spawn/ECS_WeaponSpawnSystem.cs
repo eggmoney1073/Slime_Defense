@@ -1,6 +1,8 @@
-using UnityEngine;
+using Unity.Burst;
 using Unity.Entities;
 
+[BurstCompile]
+[UpdateInGroup(typeof(SpawnSystemGroup))]
 partial struct ECS_WeaponSpawnSystem : ISystem
 {
     bool _isInitialized;

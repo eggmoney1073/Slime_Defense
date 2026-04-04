@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BaseWeapon_Authoring : MonoBehaviour
 {
-    public GameObject ProjectilePrefab;
-    public float Cooldown;
+    public GameObject projectilePrefab;
+    public float cooldown;
+    public float damage;
 }

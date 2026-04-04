@@ -15,7 +15,8 @@ class ECS_EnemySpawner_Baker : Baker<EnemySpawner_Authoring>
             timer = 0f,
             spawnInterval = authoring.SpawnInterval,
             spawnCount = 0,
-            maxSpawnCount = authoring.MaxSpawnCount
+            maxSpawnCount = authoring.MaxSpawnCount,
+            enemyHealthSale = authoring.EnemyHealthSale
         });
     }
 }

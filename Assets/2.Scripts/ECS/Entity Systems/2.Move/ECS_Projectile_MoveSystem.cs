@@ -1,6 +1,8 @@
 using Unity.Burst;
 using Unity.Entities;
 
+[BurstCompile]
+[UpdateInGroup(typeof(MoveSystemGroup))]
 partial struct ECS_Projectile_MoveSystem : ISystem
 {
     [BurstCompile]
