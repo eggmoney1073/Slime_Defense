@@ -25,11 +25,11 @@ public partial class JudgementSystemGroup : ComponentSystemGroup { }
 // 4. 대미지 계산 그룹
 [UpdateInGroup(typeof(SlimeDefenseSystemGroup))]
 [UpdateAfter(typeof(JudgementSystemGroup))]
-public partial class DamageCalculateSystemGroup : ComponentSystemGroup { }
+public partial class CalculateSystemGroup : ComponentSystemGroup { }
 
 // 5. 삭제 그룹 
 [UpdateInGroup(typeof(SlimeDefenseSystemGroup))]
-[UpdateAfter(typeof(DamageCalculateSystemGroup))]
+[UpdateAfter(typeof(CalculateSystemGroup))]
 public partial class DestroySystemGroup : ComponentSystemGroup { }
 
 // =================================================================

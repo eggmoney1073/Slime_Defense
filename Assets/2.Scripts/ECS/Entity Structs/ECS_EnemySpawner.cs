@@ -1,6 +1,6 @@
 using Unity.Entities;
 
-public struct ECS_EnemySpawner : IComponentData
+public struct EnemySpawner : IComponentData
 {
     public Entity enemyPrefab;
     public float timer;

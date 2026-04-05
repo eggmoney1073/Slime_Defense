@@ -8,7 +8,7 @@ public struct Direction : IComponentData
     public float3 moveDirection;
 }
 
-public struct DamageData : IComponentData
+public struct ProjectileDamage : IComponentData
 {
     public float damage;
 }
@@ -20,7 +20,10 @@ public struct LifetimeData : IComponentData
 
 public struct PierceData : IComponentData
 {
-    public int remainCount;
+    public int maxPierceCount;
 }
 
-public struct ProjectileDeadTag : IComponentData, IEnableableComponent { }
+public struct HitEnemyBufferElement : IBufferElementData
+{
+    public Entity enemy;
+}

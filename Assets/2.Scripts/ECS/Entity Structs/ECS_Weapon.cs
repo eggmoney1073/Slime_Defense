@@ -9,6 +9,16 @@ public struct FireRate : IComponentData
     public float timer;
 }
 
+public struct WeaponDamage : IComponentData
+{
+    public float damage;
+}
+
+public struct WeaponPierce : IComponentData
+{
+    public int pierceCount;
+}
+
 public struct ManualAimTag : IComponentData { }
 public struct AutoTargetTag : IComponentData { }
 public struct RandomAimTag : IComponentData { }
@@ -22,5 +32,6 @@ public struct WeaponPrefab : IBufferElementData
 {
     public Entity weaponEntity;
 }
+
 
 public struct WeaponSpawnerTag : IComponentData { }

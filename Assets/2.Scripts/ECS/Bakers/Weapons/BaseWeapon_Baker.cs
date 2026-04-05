@@ -13,6 +13,16 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
             timer = 0f
         });
 
+        AddComponent(entity, new WeaponDamage
+        {
+            damage  = authoring.damage
+        });
+
+        AddComponent(entity, new WeaponPierce
+        {
+            pierceCount = authoring.pierceCount
+        });
+
         Entity projectile = GetEntity(authoring.projectilePrefab, TransformUsageFlags.Dynamic);
 
         AddComponent(entity, new ProjectilePrefab
@@ -24,8 +34,5 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
         AddComponent<ManualAimTag>(entity);
 
         AddComponent<WeaponEnabledTag>(entity);
-        SetComponentEnabled<WeaponEnabledTag>(entity, true);
-
-        //Debug.Log("기본 무기 베이커 완료");
     }
 }
