@@ -9,7 +9,7 @@ public partial struct EnemyMove_System :ISystem
     {
         EnemyMove_Job moveJob = new EnemyMove_Job
         {
-            deltaTime = SystemAPI.Time.DeltaTime,
+            deltaTime = SystemAPI.GetSingleton<TimeScaleData>().scaledDeltaTime,
             wayPointBufferLookup = SystemAPI.GetBufferLookup<ECS_WayPoint>(true)
         };
 

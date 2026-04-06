@@ -28,7 +28,8 @@ partial struct ManualFire_System : ISystem
             if (!SystemAPI.IsComponentEnabled<WeaponEnabledTag>(entity))
                 continue;
 
-            float deltaTime = SystemAPI.Time.DeltaTime;
+            TimeScaleData timeData = SystemAPI.GetSingleton<TimeScaleData>();
+            float deltaTime = timeData.scaledDeltaTime;
 
             fireData.ValueRW.timer += deltaTime;
             if (fireData.ValueRO.timer >= fireData.ValueRO.coolDown)

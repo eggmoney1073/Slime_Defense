@@ -10,7 +10,7 @@ partial struct ProjectileLiveCheck_System : ISystem
     {
         ProjectileLifetime_Job lifetime_Job = new ProjectileLifetime_Job
         {
-            deltaTime = SystemAPI.Time.DeltaTime
+            deltaTime = SystemAPI.GetSingleton<TimeScaleData>().scaledDeltaTime
         };
 
         JobHandle lifetimeJobHandle = lifetime_Job.ScheduleParallel(state.Dependency);

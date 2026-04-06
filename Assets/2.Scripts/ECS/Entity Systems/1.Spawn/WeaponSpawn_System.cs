@@ -28,7 +28,6 @@ partial struct WeaponSpawn_System : ISystem
                 Entity weaponEntity = prefabBuffer[i].weaponEntity;
 
                 entityCommandBuffer.Instantiate(weaponEntity);
-                //Debug.Log("Instantiate");
             }
         }
 

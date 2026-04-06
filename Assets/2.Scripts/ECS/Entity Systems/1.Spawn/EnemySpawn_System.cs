@@ -3,8 +3,6 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 [BurstCompile]
 [UpdateInGroup(typeof(SpawnSystemGroup))]
@@ -21,7 +19,8 @@ partial struct EnemySpawn_System : ISystem
 
     public void OnUpdate(ref SystemState state)
     {
-        float deltaTime = SystemAPI.Time.DeltaTime;
+        TimeScaleData timeData = SystemAPI.GetSingleton<TimeScaleData>();
+        float deltaTime = timeData.scaledDeltaTime;
 
         // path 안전하게 가져오기
         if (!SystemAPI.TryGetSingletonEntity<PathTag>(out Entity pathEntity))

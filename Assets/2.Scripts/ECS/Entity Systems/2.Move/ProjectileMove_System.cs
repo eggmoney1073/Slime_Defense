@@ -12,7 +12,7 @@ partial struct ProjectileMove_System : ISystem
 
         ProjectileLinearMove_Job projectileMoveJob = new ProjectileLinearMove_Job
         {
-            _deltaTime = SystemAPI.Time.DeltaTime
+            _deltaTime = SystemAPI.GetSingleton<TimeScaleData>().scaledDeltaTime
         };
 
         projectileMoveJob.ScheduleParallel();
