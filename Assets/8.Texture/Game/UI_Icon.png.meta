@@ -1,0 +1,1026 @@
+fileFormatVersion: 2
+guid: 0b636308b986cc64f96e5da85b76ca21
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 800
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: XP_Bar1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 925
+        width: 499
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bb723f4f204484d8f5fad92baa6865
+      internalID: 597679293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: XP_Bar3
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 949
+        width: 324
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742fa19774fe7c0419e16eb390603dbe
+      internalID: 887889808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LevelUpWindow
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 688
+        width: 416
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b9b123f7f471e4b813f4924a367592
+      internalID: -1506802044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slot1
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 691
+        width: 124
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e52696c1814a8499e669b910d18a8e
+      internalID: 1304442190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slot2
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 701
+        width: 150
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b947dc4fc183f2645a17fba74024ef04
+      internalID: 726209118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slot3
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 683
+        width: 134
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040177094345efd49a14fd9e926226e1
+      internalID: -1649378240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: XP_Bar2
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 754
+        width: 498
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98068b9ebaea5194592ce86b372b6401
+      internalID: -1604108988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer1
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 727
+        width: 129
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba6802974f1fce74e9094f32376b443e
+      internalID: 540322046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer2
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 722
+        width: 138
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23fbd1dd717564745b50b0878522c22d
+      internalID: 981760260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ring
+      rect:
+        serializedVersion: 2
+        x: 1887
+        y: 388
+        width: 104
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c17249d5e972c6b4fa38c85d092497a2
+      internalID: 695762097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JoyStick_BG
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 151
+        width: 375
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 323f46747a3312d409e5bd2fdd26c905
+      internalID: -403364371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JoyStick_Handle
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 267
+        width: 131
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd2b49e819b50b48bec7026616540b7
+      internalID: -1762933313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HP_Icon
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 388
+        width: 166
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45530c4cd44dd6244a113351111824fb
+      internalID: -1313045620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_Icon
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 388
+        width: 138
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0ed8f1aff4ae649b9ddbdd2d19627a
+      internalID: -55721663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Setting_Icon
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 389
+        width: 145
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ea784861945b94286aff70b7733c3a
+      internalID: -927909892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause_Icon
+      rect:
+        serializedVersion: 2
+        x: 1671
+        y: 393
+        width: 132
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611266fb5a33531458342de04eb935c0
+      internalID: 182487254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Window2
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 176
+        width: 325
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 105c7d1fc6e69c4478ed69c00d6ce77c
+      internalID: 1204860082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaf4
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 215
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67186058ec86f344693ec4d2ae5df17d
+      internalID: -880417980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaf5
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 214
+        width: 26
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8890dd9d10a36b54c9072386aeb0d44b
+      internalID: 1966361183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaf6
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 217
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6582b50af3f6e6746b899af47c3fc251
+      internalID: 646695000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaf1
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 167
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38174da63e7ba8d4f883e5a8caaa8005
+      internalID: 1159854611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaf2
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 164
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e28181b8432dd6438fd3360f256cd22
+      internalID: -121453265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaf3
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 166
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e014af79b165d27488d1c38e211a0ff8
+      internalID: -360360609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 69
+        width: 263
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a5ce80fa4306247adeb58ce5ea3b7d
+      internalID: -2004840208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Window1
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 71
+        width: 303
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e181223b534b5af40a5be715e8c32e51
+      internalID: 1170205637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jem
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 113
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abdb7e0b933cc5247b2797e5c4c44bdb
+      internalID: 1126402260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Word2
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 113
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5116f6c7efa8ea49a51feb266b56393
+      internalID: 682243781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Word1
+      rect:
+        serializedVersion: 2
+        x: 1493
+        y: 111
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f11aa8f8c79db43b3a31a83f2c3287
+      internalID: -939558546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 45
+        width: 88
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20491eb69c616564bb8c17db86f5e11d
+      internalID: 1622641268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_0
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 959
+        width: 134
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ddc9c733c8e8948a415f9cf8ad0a62
+      internalID: -1933819468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_1
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 959
+        width: 158
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325452f1b9e570f43a7af568a815cf9c
+      internalID: -1863592119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8c6b19802462a8b4f911f38947311335
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Coin_Icon: -55721663
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_10: 255026441
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_100: -791350563
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_101: -1386557235
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_102: -666497357
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_107: 708041979
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_11: 219616590
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_111: -30609080
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_112: 2042501304
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_113: -85407805
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_114: -921865774
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_115: 1632190533
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_116: 1381518222
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_117: 1337905822
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_118: -1700800725
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_119: -1082940745
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_12: 354304405
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_120: -927182235
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_121: -1284925946
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_122: 1331354759
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_123: 151514568
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_124: 1100878020
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_125: -1776737290
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_126: -269031383
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_127: -1637285877
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_128: 301121513
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_129: -1908488093
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_13: -1208350491
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_130: -1671334004
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_131: -533347152
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_132: -1277791044
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_133: -2015973572
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_134: -1993881047
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_135: -1752973035
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_136: 1048064653
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_137: -1793585197
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_138: -94353330
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_139: 689800694
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_14: -189203317
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_140: 1705206975
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_141: -1182654945
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_142: 1438933035
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_143: -1386247064
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_144: 1968737896
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_145: 867860117
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_146: -287566459
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_147: -173125588
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_148: 1936079909
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_149: -1536396072
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_15: -1328788278
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_150: 1418719206
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_151: 1927619915
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_152: -2066283199
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_153: 175030453
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_154: 1839105643
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_155: -1686319237
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_156: 765967891
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_16: 1107596171
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_161: -1375791215
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_162: -147371006
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_163: -189379399
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_168: -1907668342
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_169: -1546604874
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_17: 1961064731
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_170: -855472420
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_171: -105142315
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_176: 492800174
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_177: -577724426
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_178: -713631296
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_179: -1269764829
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_18: -1749393234
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_180: -2054558619
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_181: -96702597
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_182: -1675845229
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_183: 764155201
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_184: 448503123
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_185: -677193261
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_186: 1926004024
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_187: 1992087384
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_188: -101689286
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_189: 1133282962
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_19: 2078948204
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_190: -1340817827
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_191: -1358370982
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_192: -1314742571
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_194: -608016002
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_195: 647402108
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_196: 84773312
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_197: -33500226
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_198: -853376874
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_199: -242570448
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_20: -1286863635
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_200: 1494236742
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_201: 626814623
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_202: -250618823
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_203: -1885159171
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_204: 1313385795
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_205: 1442771769
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_206: -462934836
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_207: 2084309290
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_208: -1460577826
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_21: -1443677552
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_22: -796551906
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_23: -2139440421
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_24: 1552403165
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_25: -844310539
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_26: 486655442
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_30: -1058390095
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_31: 565204708
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_32: 266230732
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_33: 1723836781
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_34: 764982566
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_35: -1776558056
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_36: -933157241
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_37: -1716768163
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_38: -1348340832
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_39: -657339642
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_40: -1871656209
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_41: -1902813417
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_42: -1401171291
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_43: -1622172700
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_44: 624448912
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_45: -1790993145
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_46: 1454273224
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_47: -662541832
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_48: -546461113
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_49: 2095593539
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_50: -1720587080
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_51: 1254454749
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_52: 1272812872
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_53: -582571083
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_54: 1734208162
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_55: -1426696133
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_56: 723675367
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_57: 1835864674
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_58: 1123939616
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_59: 512373804
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_6: -791830004
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_60: 1851800434
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_61: -1578118926
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_62: 1217118690
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_63: 1491422704
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_64: 1261480918
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_65: -230702888
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_66: 626974019
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_67: 1019566416
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_68: -632056222
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_69: 518437313
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_7: -1091698325
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_70: -2048764461
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_71: -786649643
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_72: -1516996246
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_73: 583260528
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_74: 1466128411
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_75: -784136377
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_76: -413124999
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_77: 1738653856
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_78: -1440643391
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_79: 742679361
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_8: 869665999
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_80: 222118583
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_81: -363677622
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_82: 722709881
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_83: 1846764353
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_84: -936514715
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_85: 393495801
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_86: 1319411678
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_87: -412890694
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_88: -1132129785
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_89: 1528232894
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_9: 764661856
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_90: -573574211
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_91: 703872662
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_92: -536533434
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_93: -1185086393
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_94: -1563463424
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_95: -1418187472
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_96: -564406469
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_97: -1734509868
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_98: -1579140176
+      Gemini_Generated_Image_mfb62xmfb62xmfb6_transparent_99: -235400616
+      HP_Icon: -1313045620
+      Icon: -1313045620
+      Jem: 1126402260
+      JoyStick_BG: -403364371
+      JoyStick_Handle: -1762933313
+      Leaf1: 1159854611
+      Leaf2: -121453265
+      Leaf3: -360360609
+      Leaf4: -880417980
+      Leaf5: 1966361183
+      Leaf6: 646695000
+      LevelUpWindow: -1506802044
+      Logo: -2004840208
+      Pause_Icon: 182487254
+      Ring: 695762097
+      Selection: 1622641268
+      Setting_Icon: -927909892
+      Slot1: 1304442190
+      Slot2: 726209118
+      Slot3: -1649378240
+      Timer1: 540322046
+      Timer2: 981760260
+      UI_Icon_0: -1933819468
+      UI_Icon_1: -1863592119
+      Window1: 1170205637
+      Window2: 1204860082
+      Word1: -939558546
+      Word2: 682243781
+      XP_Bar1: 597679293
+      XP_Bar2: -1604108988
+      XP_Bar3: 887889808
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

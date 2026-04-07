@@ -19,7 +19,7 @@ public class JoystickInput : MonoBehaviour
 
     void Awake()
     {
-        _inputCanvas = GetComponent<Canvas>();
+        _inputCanvas = transform.parent.GetComponent<Canvas>();
 
         _uiCamera = _inputCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _inputCanvas.worldCamera;       
     }

@@ -150,13 +150,24 @@ Input System : com.unity.inputsystem
 > 개발하면서 겪은 문제와 해결 과정을 기록합니다.
 
 - [✅] ECS와 Addressables 동시 사용 시 SubScene 로드 타이밍 이슈
+
         - SubScene Loader를 사용
+
 - [✅] Burst Compile 조건에서 static 접근 제한
+
         - Burst Compile 을 제거한 코드에서 static 사용
+
 - [✅] Entity의 Render Sort 가 무작위로 정렬되는 이슈
+
         - Entity의 Position을 카메라 기준으로 정렬
+
 - [✅] 삭제 예정 Entity를 DeadTag의 활성화로 구현하려고 했지만 Spawner Job에서 Tag 비활성화가 어려움
+
         - IEnableComponent는 생성과 동시에 활성화 되기 때문에 LiveTag로 전환하여 해결
+
+- [ ] Enemy의 Damage 처리를 투사체에서 Damage를 버퍼에 Add 하는데, 여러 투사체에서 Add를 병렬 처리하다가 동시에 참조하는 문제
+
+        - 투사체에선 Damage Add Request를 하고 Damage System에서 병렬로 Add하는 것으로 변경
         
 <br/>
 

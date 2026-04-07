@@ -27,7 +27,7 @@ public class TimeCount_Mono : MonoBehaviour
 
         TimeScaleData timeData = _timeQuery.GetSingleton<TimeScaleData>();
 
-        double time = timeData.time;
-        _countText.text = time.ToString();
+        float time = timeData.time;        
+        _countText.text = TimeCalculater.Calculate_MM_SS(time);
     }
 }
