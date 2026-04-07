@@ -174,8 +174,8 @@ Input System : com.unity.inputsystem
 ## 📸 스크린샷
 
 > 인게임 스크린샷
-> (Images/Caputre1.png)
-> (Images/Caputre2.png)
+> ![스크린샷1](Images/Caputre1.png)
+> ![스크린샷2](Images/Caputre2.png)
 
 <br/>
 
