@@ -173,7 +173,9 @@ Input System : com.unity.inputsystem
 
 ## 📸 스크린샷
 
-> 추가 예정
+> 인게임 스크린샷
+> (Images/Caputre1.png)
+> (Images/Caputre2.png)
 
 <br/>
 
