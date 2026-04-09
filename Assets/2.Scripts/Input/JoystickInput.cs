@@ -3,25 +3,21 @@ using UnityEngine.InputSystem;
 
 public class JoystickInput : MonoBehaviour
 {
-    [SerializeField]
-    GameObject _joystickPrefab;
+    [SerializeField] private GameObject _joystickPrefab;
+    [SerializeField] private Canvas _inputCanvas;
 
+    bool _isTouching = false;
     RectTransform _joystickRoot;
     RectTransform _joystick;
+    RectTransform _joystickArea;
 
-    Canvas _inputCanvas;
     Camera _uiCamera;
-
     Vector2 _direction = Vector2.zero;
-
-    Vector2 _touchStartPosition = Vector2.zero;
-
 
     void Awake()
     {
-        _inputCanvas = transform.parent.GetComponent<Canvas>();
-
-        _uiCamera = _inputCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _inputCanvas.worldCamera;       
+        _joystickArea = transform.GetComponent<RectTransform>();
+        _uiCamera = _inputCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _inputCanvas.worldCamera;
     }
 
     void Start()
@@ -40,24 +36,35 @@ public class JoystickInput : MonoBehaviour
             return;
 
         var touch = Touchscreen.current.primaryTouch;
+        Vector2 screenPos = touch.position.ReadValue();
 
         // 터치 시작
         if (touch.press.wasPressedThisFrame)
         {
-            _joystickRoot.gameObject.SetActive(true);
+            if (!IsInTouchArea(screenPos))
+            {
+                _isTouching = false;
+                return;
+            }
 
-            Vector2 screenPos = touch.position.ReadValue();
+            _isTouching = true;
+            _joystickRoot.gameObject.SetActive(true);
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_inputCanvas.transform as RectTransform, screenPos, _uiCamera, out Vector2 localPos);
 
             _joystickRoot.anchoredPosition = localPos;
-            _touchStartPosition = localPos;
         }
 
         // 터치 중
-        if(touch.press.isPressed)
+        if (_isTouching && touch.press.isPressed)
         {
-            Vector2 screenPos = touch.position.ReadValue();
+            if (!IsInTouchArea(screenPos))
+            {
+                _isTouching = false;
+                _joystickRoot.gameObject.SetActive(false);
+                return;
+            }
+
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_joystickRoot.transform as RectTransform, screenPos, _uiCamera, out Vector2 localPos);
             _joystick.anchoredPosition = localPos;
 
@@ -74,5 +81,12 @@ public class JoystickInput : MonoBehaviour
         {
             _joystickRoot.gameObject.SetActive(false);
         }
+    }
+
+    bool IsInTouchArea(Vector2 screenPos)
+    {
+        if (_joystickArea == null) return false;
+
+        return RectTransformUtility.RectangleContainsScreenPoint(_joystickArea, screenPos, _uiCamera);
     }
 }

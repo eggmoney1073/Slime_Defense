@@ -7,12 +7,4 @@ namespace DefineEnums
         Timer,
         ShootDirection
     }
-
-    public enum AddressableType
-    {
-        DisplayUI,
-        InteractionUI,
-        Enemy,
-        Projectile
-    }
 }

@@ -1,8 +1,9 @@
 using Unity.Entities;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour 
+public class TimeManager : SingletonGameobject<TimeManager>
 {
+    public void SetPause() => RequestTimeScaleChange(0f);
     public void SetTimeScaleNormal() => RequestTimeScaleChange(1f);
     public void SetTimeScaleFast() => RequestTimeScaleChange(2f);
 

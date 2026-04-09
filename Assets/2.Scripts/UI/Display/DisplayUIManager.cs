@@ -7,11 +7,10 @@ public class DisplayUIManager : MonoBehaviour
     private DisplaySystem _displaySystem = new DisplaySystem();
 
     // ui 모두 instantiate
+
     void Awake()
     {
-        _displaySystem.InstantiateDisplayUI(UIType.EXP, _safeZone);
-        _displaySystem.InstantiateDisplayUI(UIType.Timer, _safeZone);
-        _displaySystem.InstantiateDisplayUI(UIType.ShootDirection, _safeZone);
+        _displaySystem.InstantiateAllDisplayUI(_safeZone);
     }
 
     // ui 모두 release

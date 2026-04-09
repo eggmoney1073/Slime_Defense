@@ -8,8 +8,13 @@ public partial class SlimeDefenseSystemGroup : ComponentSystemGroup { }
 
 // =================================================================
 
+// 0. 관리 그룹
+[UpdateInGroup(typeof(SlimeDefenseSystemGroup))]
+public partial class ManageSystemGroup : ComponentSystemGroup { }
+
 // 1. 생성 그룹
 [UpdateInGroup(typeof(SlimeDefenseSystemGroup))]
+[UpdateAfter(typeof(ManageSystemGroup))]
 public partial class SpawnSystemGroup : ComponentSystemGroup { }
 
 // 2. 이동 그룹

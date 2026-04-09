@@ -8,10 +8,9 @@ public class DisplaySystem
 {
     Dictionary<UIType, GameObject> _displayUIInstances = new Dictionary<UIType, GameObject>();
 
-    private bool _isInitialized = false;
     string _displayUIAddressBasePath;
 
-    public void InitializeSystem()
+    public void InstantiateAllDisplayUI(Transform uiRoot)
     {
         AsyncOperationHandle<AddressablePath> handle = Addressables.LoadAssetAsync<AddressablePath>("Assets/6.Data/DisplayUIPath.asset");
         handle.Completed += CompletedHandle =>
@@ -23,24 +22,11 @@ public class DisplaySystem
             }
 
             _displayUIAddressBasePath = CompletedHandle.Result.PrefabAddress;
-            _isInitialized = true;
             Addressables.Release(handle);
-        };
-    }
 
-    public void InstantiateDisplayUI(UIType displayUIType, Transform uiRoot)
-    {
-        if (!_isInitialized)
-        {
-            InitializeSystem();
-        }
-
-        string path = _displayUIAddressBasePath + displayUIType.ToString() + ".prefab";
-        AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(path, uiRoot);
-
-        handle.Completed += CompletedHandle =>
-        {
-            OnPrefabLoaded(CompletedHandle, displayUIType);
+            InstantiateDisplayUI(UIType.EXP, uiRoot);
+            InstantiateDisplayUI(UIType.Timer, uiRoot);
+            InstantiateDisplayUI(UIType.ShootDirection, uiRoot);
         };
     }
 
@@ -51,6 +37,17 @@ public class DisplaySystem
             Addressables.ReleaseInstance(kvp.Value);
         }
         _displayUIInstances.Clear();
+    }
+
+    private void InstantiateDisplayUI(UIType displayUIType, Transform uiRoot)
+    {
+        string path = _displayUIAddressBasePath + displayUIType.ToString() + ".prefab";
+        AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(path, uiRoot);
+
+        handle.Completed += CompletedHandle =>
+        {
+            OnPrefabLoaded(CompletedHandle, displayUIType);
+        };
     }
 
     private void OnPrefabLoaded(AsyncOperationHandle<GameObject> handle, UIType displayUIType)
@@ -64,6 +61,4 @@ public class DisplaySystem
         GameObject instance = handle.Result;
         _displayUIInstances.Add(displayUIType, instance);
     }
-
-
 }

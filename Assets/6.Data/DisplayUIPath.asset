@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: DisplayUIPath
   m_EditorClassIdentifier: Assembly-CSharp::AddressablePath
   PrefabAddress: Assets/4.Prefabs/UI/Display/
-  Type: 0

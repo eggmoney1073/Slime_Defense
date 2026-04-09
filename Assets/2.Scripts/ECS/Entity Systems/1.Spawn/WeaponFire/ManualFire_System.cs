@@ -19,19 +19,20 @@ partial struct ManualFire_System : ISystem
     public void OnUpdate(ref SystemState state)
     {
         EntityCommandBuffer ecb = new EntityCommandBuffer(Unity.Collections.Allocator.Temp);
+        TimeScaleData timeData = SystemAPI.GetSingleton<TimeScaleData>();
 
-        foreach ((RefRW<FireRate> fireData, RefRW<ProjectilePrefab> projectile, RefRO<WeaponDamage> weaponDamage, RefRO<WeaponPierce> pierce,Entity entity) 
-                                    in SystemAPI.Query<RefRW<FireRate>, RefRW<ProjectilePrefab>, RefRO<WeaponDamage>, RefRO<WeaponPierce>> ().WithAll<WeaponTag>().WithEntityAccess())
+        float deltaTime = timeData.scaledDeltaTime;
+
+        if (deltaTime <= 0f) return;
+
+        foreach ((RefRW<FireRate> fireData, RefRW<ProjectilePrefab> projectile, RefRO<WeaponDamage> weaponDamage, RefRO<WeaponPierce> pierce, Entity entity)
+                                    in SystemAPI.Query<RefRW<FireRate>, RefRW<ProjectilePrefab>, RefRO<WeaponDamage>, RefRO<WeaponPierce>>().WithAll<WeaponTag>().WithEntityAccess())
         {
-            //Debug.Log("Checking weapon fire...");
-
             if (!SystemAPI.IsComponentEnabled<WeaponEnabledTag>(entity))
                 continue;
 
-            TimeScaleData timeData = SystemAPI.GetSingleton<TimeScaleData>();
-            float deltaTime = timeData.scaledDeltaTime;
-
             fireData.ValueRW.timer += deltaTime;
+
             if (fireData.ValueRO.timer >= fireData.ValueRO.coolDown)
             {
                 fireData.ValueRW.timer = 0f;
