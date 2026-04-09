@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 37b4090406f1f9f4bbb3620ffcc82fd7
   m_SerializeEntries:
+  - m_GUID: 4fec194b7ec67644dab80072ee478498
+    m_Address: Assets/4.Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e9901de17d20e240b04363f96848598
     m_Address: Assets/1.Scenes
     m_ReadOnly: 0

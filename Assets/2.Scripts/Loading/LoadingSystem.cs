@@ -20,16 +20,17 @@ public class LoadingSystem
     }
 
     static bool _isAdreessableInitializeComplete = false;
-    static bool _isInitializing= false;
+    static bool _isInitializing = false;
     static string _sceneBaseAddress = "Assets/1.Scenes/";
     static AsyncOperationHandle<SceneInstance> _sceneLoadHandle;
     public static Action _onSceneLoadCompleted;
 
     /// <summary>
-    /// ·Îµù ÁøÇà·ü
+    /// ë¡œë”© ì§„í–‰ë¥ 
     /// </summary>
-    public static float LoadingProcess 
-    { get 
+    public static float LoadingProcess
+    {
+        get
         {
             if (_sceneLoadHandle.IsValid())
                 return _sceneLoadHandle.PercentComplete;
@@ -39,15 +40,15 @@ public class LoadingSystem
     }
 
     /// <summary>
-    /// Addressables ÃÊ±âÈ­
+    /// Addressables ì´ˆê¸°í™”
     /// </summary>
     public static void InitializeAddressables(Action onCompleted = null)
     {
-        // ÀÌ¹Ì ÃÊ±âÈ­ ÁßÀÎÁö È®ÀÎ
+        // ì´ë¯¸ ì´ˆê¸°í™” ì¤‘ì¸ì§€ í™•ì¸
         if (_isInitializing)
             return;
 
-        AsyncOperationHandle  handle = Addressables.InitializeAsync();
+        AsyncOperationHandle handle = Addressables.InitializeAsync();
         _isInitializing = true;
 
         handle.Completed += result =>
@@ -69,15 +70,15 @@ public class LoadingSystem
 
 
     /// <summary>
-    /// ¾À ·Îµå ½Ãµµ
+    /// ì”¬ ë¡œë“œ ì‹œë„
     /// </summary>
     /// <param name="sceneName"></param>
     public static void LoadAddressableScene(SceneName sceneName)
     {
-        // ¾À ÀÌ¸§ À¯È¿¼º °Ë»ç
-        // Title ¾ÀÀº ·ÎµåÇÏÁö ¾ÊÀ½
-        // Loading ¾ÀÀº ´Üµ¶À¸·Î ·Îµå
-        if (sceneName == SceneName.None || sceneName == SceneName.Max 
+        // ì”¬ ì´ë¦„ ìœ íš¨ì„± ê²€ì‚¬
+        // Title ì”¬ì€ ë¡œë“œí•˜ì§€ ì•ŠìŒ
+        // Loading ì”¬ì€ ë‹¨ë…ìœ¼ë¡œ ë¡œë“œ
+        if (sceneName == SceneName.None || sceneName == SceneName.Max
             || sceneName == SceneName.Scene_Title || sceneName == SceneName.Scene_Loading
             || sceneName == SceneName.Scene_DownLoad)
         {
@@ -85,14 +86,14 @@ public class LoadingSystem
             return;
         }
 
-        // ÀÌ¹Ì ·Îµù ÁßÀÎÁö È®ÀÎ
+        // ì´ë¯¸ ë¡œë”© ì¤‘ì¸ì§€ í™•ì¸
         if (_sceneLoadHandle.IsValid() && !_sceneLoadHandle.IsDone)
         {
             Debug.LogWarning("Scene is already loading.");
             return;
         }
 
-        // Addressables ÃÊ±âÈ­ ¿©ºÎ È®ÀÎ
+        // Addressables ì´ˆê¸°í™” ì—¬ë¶€ í™•ì¸
         if (!_isAdreessableInitializeComplete)
         {
             Debug.LogError("Addressables not initialized yet.");
@@ -104,15 +105,15 @@ public class LoadingSystem
         //LoadingSceneManager.Instance.ShowUI(_onSceneLoadCompleted);
         LoadingSceneManager.Instance.ShowUI();
         _sceneLoadHandle = Addressables.LoadSceneAsync(sceneAddress, LoadSceneMode.Additive);
-        
 
-        // Äİ¹éÇÔ¼ö µî·Ï
+
+        // ì½œë°±í•¨ìˆ˜ ë“±ë¡
         _sceneLoadHandle.Completed += OnSceneLoadCompleted;
     }
 
 
     /// <summary>
-    /// ·Îµù ¾ÀÀº Å¸ÀÌÆ²¿¡¼­ ÇÑ¹ø¸¸ ·Îµå
+    /// ë¡œë”© ì”¬ì€ íƒ€ì´í‹€ì—ì„œ í•œë²ˆë§Œ ë¡œë“œ
     /// </summary>
     public static void LoadAddressableLoadingScene()
     {
@@ -130,32 +131,32 @@ public class LoadingSystem
             {
                 Debug.LogError("Failed to load loading scene.");
             }
-        };        
+        };
     }
 
 
     /// <summary>
-    /// ¾À ·Îµå ¿Ï·á Äİ¹é
+    /// ì”¬ ë¡œë“œ ì™„ë£Œ ì½œë°±
     /// </summary>
     /// <param name="handle"></param>
     private static void OnSceneLoadCompleted(AsyncOperationHandle<SceneInstance> handle)
     {
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
-            // ·Îµå ¼º°ø ½Ã
+            // ë¡œë“œ ì„±ê³µ ì‹œ
             Debug.Log("Scene loaded successfully.");
             _onSceneLoadCompleted?.Invoke();
         }
         else
         {
-            // ·Îµå ½ÇÆĞ ½Ã
+            // ë¡œë“œ ì‹¤íŒ¨ ì‹œ
             Debug.LogError("Failed to load scene.");
         }
     }
 
 
     /// <summary>
-    /// ÀÌÀü ¾À ¾ğ·Îµå
+    /// ì´ì „ ì”¬ ì–¸ë¡œë“œ
     /// </summary>
     public static void UnloadCurrentScene()
     {
