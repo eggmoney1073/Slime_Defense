@@ -1,4 +1,5 @@
 using UnityEngine;
+using DefineEnums;
 
 public class DisplayUIManager : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class DisplayUIManager : MonoBehaviour
     // ui 모두 instantiate
     void Awake()
     {
-        _displaySystem.InstantiateDisplayUI(DisplaySystem.DisplayUIType.EXP, _safeZone);
-        _displaySystem.InstantiateDisplayUI(DisplaySystem.DisplayUIType.Timer, _safeZone);
-        _displaySystem.InstantiateDisplayUI(DisplaySystem.DisplayUIType.ShootDirection, _safeZone);
+        _displaySystem.InstantiateDisplayUI(UIType.EXP, _safeZone);
+        _displaySystem.InstantiateDisplayUI(UIType.Timer, _safeZone);
+        _displaySystem.InstantiateDisplayUI(UIType.ShootDirection, _safeZone);
     }
 
     // ui 모두 release

@@ -2734,6 +2734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EXP_FillingUI
       objectReference: {fileID: 0}
+    - target: {fileID: 189558317248447063, guid: 5fce52c18ceb952418286af958ae27b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7812235795588473989, guid: 5fce52c18ceb952418286af958ae27b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3444,6 +3448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 528546351477860460, guid: f18c14ad544a4f543be2fffd64453fde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6482309682687697634, guid: f18c14ad544a4f543be2fffd64453fde, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3637,6 +3645,10 @@ PrefabInstance:
     - target: {fileID: 2770140071820535853, guid: 0dddfba5b622288478e8c3a04851a6d0, type: 3}
       propertyPath: m_Name
       value: ShootDirection
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770140071820535853, guid: 0dddfba5b622288478e8c3a04851a6d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4281114214286786212, guid: 0dddfba5b622288478e8c3a04851a6d0, type: 3}
       propertyPath: m_Pivot.x

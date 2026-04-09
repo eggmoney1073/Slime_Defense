@@ -2,24 +2,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using DefineEnums;
 
 public class DisplaySystem
 {
-    public enum DisplayUIType
+    Dictionary<UIType, GameObject> _displayUIInstances = new Dictionary<UIType, GameObject>();
+
+    private bool _isInitialized = false;
+    string _displayUIAddressBasePath;
+
+    public void InitializeSystem()
     {
-        EXP,
-        Timer,
-        ShootDirection
+        AsyncOperationHandle<AddressablePath> handle = Addressables.LoadAssetAsync<AddressablePath>("Assets/6.Data/DisplayUIPath.asset");
+        handle.Completed += CompletedHandle =>
+        {
+            if (CompletedHandle.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.LogError("DisplaySystem 초기화 실패: AddressablePath 로드 실패");
+                return;
+            }
+
+            _displayUIAddressBasePath = CompletedHandle.Result.PrefabAddress;
+            _isInitialized = true;
+            Addressables.Release(handle);
+        };
     }
 
-
-    Dictionary<DisplayUIType, GameObject> _displayUIInstances = new Dictionary<DisplayUIType, GameObject>();
-
-    const string _displayUIAddressBasePath = "4.Prefabs/UI/Display/";
-
-    public void InstantiateDisplayUI(DisplayUIType displayUIType, Transform uiRoot)
+    public void InstantiateDisplayUI(UIType displayUIType, Transform uiRoot)
     {
-        string path = _displayUIAddressBasePath + displayUIType.ToString();
+        if (!_isInitialized)
+        {
+            InitializeSystem();
+        }
+
+        string path = _displayUIAddressBasePath + displayUIType.ToString() + ".prefab";
         AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(path, uiRoot);
 
         handle.Completed += CompletedHandle =>
@@ -37,20 +53,7 @@ public class DisplaySystem
         _displayUIInstances.Clear();
     }
 
-    private void ReleaseDisplayUI(DisplayUIType displayUIType)
-    {
-        if (_displayUIInstances.TryGetValue(displayUIType, out GameObject instance))
-        {
-            Addressables.ReleaseInstance(instance);
-            _displayUIInstances.Remove(displayUIType);
-        }
-        else
-        {
-            Debug.LogWarning($"Display UI of type {displayUIType} not found for release.");
-        }
-    }
-
-    private void OnPrefabLoaded(AsyncOperationHandle<GameObject> handle, DisplayUIType displayUIType)
+    private void OnPrefabLoaded(AsyncOperationHandle<GameObject> handle, UIType displayUIType)
     {
         if (handle.Status != AsyncOperationStatus.Succeeded)
         {

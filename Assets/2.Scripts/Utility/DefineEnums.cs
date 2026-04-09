@@ -1,32 +1,18 @@
 
 namespace DefineEnums
 {
-    public enum Gun_Type
+    public enum UIType
     {
-        None = 0,
-        Pistol,
-        ShotGun,
-        Rifle,
-        Sniper,
-        Max
+        EXP,
+        Timer,
+        ShootDirection
     }
 
-    public enum Bullet_Type
+    public enum AddressableType
     {
-        None = 0,
-        PistolBullet,
-        ShotGunShell,
-        RifleBullet,
-        SniperRound,
-        Max
-    }
-
-    public enum Input_Action_Maps
-    {
-        None = 0,
-        Player_Input,
-        UI_Input,
-        Title_Input,
-        Max
+        DisplayUI,
+        InteractionUI,
+        Enemy,
+        Projectile
     }
 }
