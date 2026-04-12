@@ -7,4 +7,27 @@ namespace DefineEnums
         Timer,
         ShootDirection
     }
+
+    public enum WeaponUpgradeType
+    {
+        Damage,
+        Pierce,
+        ProjectileCount,
+        FireRate
+    }
+
+    public enum WeaponType
+    {
+        Main,
+        AutoFire,
+        Area
+    }
+
+
+    public enum SelectionRarity
+    {
+        Common,
+        Rare,
+        Epic
+    }
 }
