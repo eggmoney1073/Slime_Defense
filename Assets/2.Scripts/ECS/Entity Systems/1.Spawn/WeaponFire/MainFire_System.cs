@@ -25,8 +25,8 @@ partial struct MainFire_System : ISystem
 
         if (deltaTime <= 0f) return;
 
-        foreach ((RefRW<FireRate> fireData, RefRW<ProjectilePrefab> projectile, RefRO<WeaponDamage> weaponDamage, RefRO<WeaponPierce> pierce, Entity entity)
-                                    in SystemAPI.Query<RefRW<FireRate>, RefRW<ProjectilePrefab>, RefRO<WeaponDamage>, RefRO<WeaponPierce>>().WithAll<WeaponTag>().WithEntityAccess())
+        foreach ((RefRW<FireRate> fireData, RefRW<ProjectilePrefab> projectile, RefRO<WeaponDamage> weaponDamage, RefRO<WeaponPierce> pierce, RefRO<WeaponProjectileCount> projectileCount, Entity entity)
+                                    in SystemAPI.Query<RefRW<FireRate>, RefRW<ProjectilePrefab>, RefRO<WeaponDamage>, RefRO<WeaponPierce>, RefRO<WeaponProjectileCount>>().WithAll<WeaponTag>().WithEntityAccess())
         {
             if (!SystemAPI.IsComponentEnabled<WeaponEnabledTag>(entity))
                 continue;
@@ -35,39 +35,52 @@ partial struct MainFire_System : ISystem
 
             if (fireData.ValueRO.timer >= fireData.ValueRO.coolDown)
             {
-                fireData.ValueRW.timer = 0f;
+                fireData.ValueRW.timer -= fireData.ValueRO.coolDown;
 
-                Entity projectileEntity = ecb.Instantiate(projectile.ValueRO.projectileEntity);
+                int shotCount = projectileCount.ValueRO.projectileCount;
 
-                float3 dir = AimDirectionBridge.AimDirection;
-                float angle = math.atan2(dir.y, dir.x);
-                float3 spawnPosition = new float3(0, 0, _spawnIndex * -0.001f);
-                _spawnIndex++;
+                float3 aimDir = AimDirectionBridge.AimDirection;
+                float baseAngle = math.atan2(aimDir.y, aimDir.x);
+                float angleStep = math.radians(11f);
 
-                ecb.SetComponent(projectileEntity, LocalTransform.FromPositionRotationScale(spawnPosition, quaternion.RotateZ(angle), 1f));
+                float totalSpread = angleStep * (shotCount - 1);
+                float startAngle = baseAngle - totalSpread / 2f;
 
-                ecb.AddComponent(projectileEntity, new Direction
+                for (int i = 0; i < shotCount; i++)
                 {
-                    moveDirection = dir
-                });
+                    float currentAngle = startAngle + angleStep * i;
+                    float3 currentDir = new float3(math.cos(currentAngle), math.sin(currentAngle), 0f);
 
-                ecb.AddComponent(projectileEntity, new ProjectileDamage
-                {
-                    damage = weaponDamage.ValueRO.damage
-                });
+                    Entity projectileEntity = ecb.Instantiate(projectile.ValueRO.projectileEntity);
 
-                ecb.AddComponent(projectileEntity, new PierceData
-                {
-                    maxPierceCount = pierce.ValueRO.pierceCount
-                });
+                    float3 spawnPosition = new float3(0, 0, _spawnIndex * -0.00001f);
+                    _spawnIndex++;
 
-                ecb.AddBuffer<HitEnemyBufferElement>(projectileEntity);
+                    ecb.SetComponent(projectileEntity, LocalTransform.FromPositionRotationScale(spawnPosition, quaternion.RotateZ(currentAngle), 1f));
+
+                    ecb.AddComponent(projectileEntity, new Direction
+                    {
+                        moveDirection = currentDir
+                    });
+
+                    ecb.AddComponent(projectileEntity, new ProjectileDamage
+                    {
+                        damage = weaponDamage.ValueRO.damage
+                    });
+
+                    ecb.AddComponent(projectileEntity, new PierceData
+                    {
+                        maxPierceCount = pierce.ValueRO.pierceCount
+                    });
+
+                    ecb.AddBuffer<HitEnemyBufferElement>(projectileEntity);
+                }
             }
         }
 
         ecb.Playback(state.EntityManager);
         ecb.Dispose();
-        int projectileCount = _projectileQuery.CalculateEntityCount();
-        ProjectileCount.SetCount(projectileCount);
+        int allProjectileCount = _projectileQuery.CalculateEntityCount();
+        ProjectileCount.SetCount(allProjectileCount);
     }
 }

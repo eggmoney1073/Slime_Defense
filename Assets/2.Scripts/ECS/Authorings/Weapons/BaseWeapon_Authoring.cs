@@ -6,4 +6,5 @@ public class BaseWeapon_Authoring : MonoBehaviour
     public float cooldown;
     public float damage;
     public int pierceCount;
+    public int projectileCount;
 }

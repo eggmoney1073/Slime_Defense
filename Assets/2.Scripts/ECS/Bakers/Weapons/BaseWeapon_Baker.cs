@@ -1,4 +1,5 @@
 using Unity.Entities;
+using Unity.VisualScripting;
 using UnityEngine;
 
 class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
@@ -15,7 +16,7 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
 
         AddComponent(entity, new WeaponDamage
         {
-            damage  = authoring.damage
+            damage = authoring.damage
         });
 
         AddComponent(entity, new WeaponPierce
@@ -30,9 +31,14 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
             projectileEntity = projectile
         });
 
+        AddComponent(entity, new WeaponProjectileCount
+        {
+            projectileCount = authoring.projectileCount
+        });
+
+
         AddComponent<WeaponTag>(entity);
         AddComponent<ManualAimTag>(entity);
-
         AddComponent<WeaponEnabledTag>(entity);
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine;
 public class SubSceneLoader : MonoBehaviour
 {
     [SerializeField] string sceneGUID;
-    [SerializeField] SubScene _subScene;
 
     void Start()
     {
@@ -23,8 +22,6 @@ public class SubSceneLoader : MonoBehaviour
 
         SceneSystem.LoadSceneAsync(world.Unmanaged, guid);
 
-        //_subScene.SceneAsset = SceneSystem.GetSceneEntity(world.Unmanaged, guid);
         var query = world.EntityManager.CreateEntityQuery(typeof(LocalTransform));
-        //Debug.Log("Entity count: " + query.CalculateEntityCount());
     }
 }

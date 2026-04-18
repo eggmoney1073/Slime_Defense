@@ -19,6 +19,11 @@ public struct WeaponPierce : IComponentData
     public int pierceCount;
 }
 
+public struct WeaponProjectileCount : IComponentData
+{
+    public int projectileCount;
+}
+
 public struct ManualAimTag : IComponentData { }
 public struct AutoTargetTag : IComponentData { }
 public struct RandomAimTag : IComponentData { }
