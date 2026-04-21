@@ -5,17 +5,10 @@ public class FillingUI : MonoBehaviour
     [SerializeField] private RectTransform _backgroundRect;
     [SerializeField] private RectTransform _fillingRect;
 
-    [SerializeField] private float _fillingAmount;
-
-    public void SetFillingAmountValue(float amount)
-    {
-        _fillingAmount = amount;
-    }
-
     private void Update()
     {
         SpinningFillingArea();
-        SetUIFillingAmount(_fillingAmount);
+        SetUIFillingAmount(EXPCount.Exp);
     }
 
     void SetUIFillingAmount(float amount)

@@ -287,6 +287,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisplayUIManager
   _safeZone: {fileID: 1100291822}
+--- !u!1 &56856615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56856617}
+  - component: {fileID: 56856616}
+  m_Layer: 0
+  m_Name: LevelUpBridge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &56856616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56856615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838382af0da97aa4f954846c8cceee28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelUpEcsBridge
+  _flow: {fileID: 1510213367}
+--- !u!4 &56856617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56856615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &237948524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JoystickInput
   _joystickPrefab: {fileID: 5740754267652416974, guid: b0fac71f48e778046ad1df0106bfb7c7, type: 3}
   _inputCanvas: {fileID: 1103558820}
+  IsPaused: 0
 --- !u!1 &792162682
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2382,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc09cb7d3685414ea0aca65f2439bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpController
+--- !u!114 &1510213367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2137011320401345704, guid: 09a58a186f2222442970e942ff7e3fab, type: 3}
+  m_PrefabInstance: {fileID: 5801189107450187877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364ac651c187d744393e29da9d747832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelUpFlow
 --- !u!1 &1644825112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3324,6 +3381,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1502332419}
     m_Modifications:
+    - target: {fileID: 2137011320401345704, guid: 09a58a186f2222442970e942ff7e3fab, type: 3}
+      propertyPath: _joystickInput
+      value: 
+      objectReference: {fileID: 692584407}
     - target: {fileID: 2840540081618907287, guid: 09a58a186f2222442970e942ff7e3fab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3422,7 +3483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3358917860167374613, guid: 09a58a186f2222442970e942ff7e3fab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3358917860167374613, guid: 09a58a186f2222442970e942ff7e3fab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3452,7 +3513,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -46.753
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 756913275500730805, guid: 09a58a186f2222442970e942ff7e3fab, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3577,3 +3639,4 @@ SceneRoots:
   - {fileID: 1386531952}
   - {fileID: 1222579170}
   - {fileID: 427116057}
+  - {fileID: 56856617}

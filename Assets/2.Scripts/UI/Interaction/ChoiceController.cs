@@ -1,22 +1,20 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChoiceController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _weaponNameText;
     [SerializeField] private TextMeshProUGUI _informationText;
+    [SerializeField] private Button _choiceButton;
 
-    LevelUpController _levelUpController;
-
-    public void SetText(LevelUpOptionData data, LevelUpController levelUpController)
+    public void SetChoice(int optionIndex, LevelUpOptionData data, Action<int> onButtonClicked)
     {
         _weaponNameText.text = data.Type.ToString();
         _informationText.text = data.description;
-        _levelUpController = levelUpController;
-    }
 
-    public void OnChoiceSlot()
-    {
-
+        _choiceButton.onClick.RemoveAllListeners();
+        _choiceButton.onClick.AddListener(() => onButtonClicked.Invoke(optionIndex));
     }
 }

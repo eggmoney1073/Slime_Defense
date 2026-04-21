@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class TimeManager : SingletonGameobject<TimeManager>
 {
+    private float _gameTimeScale = 1f;
     public void SetPause() => RequestTimeScaleChange(0f);
     public void SetTimeScaleNormal() => RequestTimeScaleChange(1f);
     public void SetTimeScaleFast() => RequestTimeScaleChange(2f);
+    public void Resume() => RequestTimeScaleChange(_gameTimeScale);
 
-    void RequestTimeScaleChange(float targetTimeScale)
+    private void RequestTimeScaleChange(float targetTimeScale)
     {
+        if (targetTimeScale > 0.3f)
+        {
+            _gameTimeScale = targetTimeScale;
+        }
+
         World defaultWorld = World.DefaultGameObjectInjectionWorld;
         if (defaultWorld == null) return;
 

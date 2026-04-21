@@ -7,6 +7,8 @@ public class JoystickInput : MonoBehaviour
     [SerializeField] private Canvas _inputCanvas;
 
     bool _isTouching = false;
+    public bool IsPaused = false;
+
     RectTransform _joystickRoot;
     RectTransform _joystick;
     RectTransform _joystickArea;
@@ -32,6 +34,12 @@ public class JoystickInput : MonoBehaviour
 
     void Update()
     {
+        if (IsPaused)
+        {
+            _joystickRoot.gameObject.SetActive(false);
+            return;
+        }
+
         if (Touchscreen.current == null)
             return;
 

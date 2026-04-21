@@ -7,12 +7,12 @@ public class InteractionUIManager : SingletonGameobject<InteractionUIManager>
     {
         if (GUI.Button(new Rect(10, 10, 100, 50), "Show"))
         {
-            _controller.ShowUI();
+            _controller.ActivateWindow();
         }
 
         if (GUI.Button(new Rect(10, 70, 100, 50), "Hide"))
         {
-            _controller.HideUI();
+            _controller.DeactivateWindow();
         }
     }
 }

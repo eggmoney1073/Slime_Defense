@@ -87,9 +87,6 @@ public partial struct Collision_Job : IJobEntity
                                         enemy = other
                                     });
 
-                                    // 충돌 처리
-                                    Debug.Log("충돌");
-
                                     // 적에게 대미지 기록
                                     damagedBuffer.Add(new Damaged
                                     {
