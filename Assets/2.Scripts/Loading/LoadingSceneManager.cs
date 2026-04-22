@@ -53,7 +53,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
 
     public void HideUI()
     {
-        StartCoroutine(Co_FadeOut(0.5f));
+        StartCoroutine(Co_FadeOut(1f));
         _canvasGroup.blocksRaycasts = false;
         _fadeOutCallBack?.Invoke();
     }
@@ -70,7 +70,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
         }
         _canvasGroup.alpha = 1f;
 
-        if(_titleImage != null)
+        if (_titleImage != null)
             Destroy(_titleImage);
 
         StartCoroutine(Co_SetLoadingBar());
@@ -91,7 +91,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
 
     IEnumerator Co_SetLoadingBar()
     {
-        while(LoadingSystem.LoadingProcess > 0.0001f && LoadingSystem.LoadingProcess < 0.999f)
+        while (LoadingSystem.LoadingProcess > 0.0001f && LoadingSystem.LoadingProcess < 0.999f)
         {
             _loadingBar.value = LoadingSystem.LoadingProcess;
             yield return null;
@@ -99,9 +99,10 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
         _loadingBar.value = 1f;
 
         // 로딩 완료
-        _touchToStartText.SetActive(true);
-        _touchToStartButton.SetActive(true);
+        // _touchToStartText.SetActive(true);
+        // _touchToStartButton.SetActive(true);
         //_eventSystem.SetActive(false);
+        HideUI();
     }
     #endregion
 
