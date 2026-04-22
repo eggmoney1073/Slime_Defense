@@ -1,4 +1,5 @@
 using Unity.Entities;
+using DefineEnums;
 
 public struct GameProgress : IComponentData
 {
@@ -17,6 +18,7 @@ public struct LevelUpEvent : IComponentData
 
 public struct UpgradeRequest : IComponentData
 {
+    public Entity weaponEntity;
     public float value;
-    public int optionIndex;
+    public WeaponUpgradeType upgradeType;
 }

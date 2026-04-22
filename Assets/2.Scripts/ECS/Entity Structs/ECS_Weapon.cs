@@ -1,4 +1,5 @@
 using Unity.Entities;
+using DefineEnums;
 
 public struct WeaponTag : IComponentData { }
 public struct WeaponEnabledTag : IComponentData, IEnableableComponent { }
@@ -24,9 +25,10 @@ public struct WeaponProjectileCount : IComponentData
     public int projectileCount;
 }
 
-public struct ManualAimTag : IComponentData { }
-public struct AutoTargetTag : IComponentData { }
-public struct RandomAimTag : IComponentData { }
+public struct ECSWeaponType : IComponentData
+{
+    public WeaponType type;
+}
 
 public struct ProjectilePrefab : IComponentData
 {
@@ -40,3 +42,9 @@ public struct WeaponPrefab : IBufferElementData
 
 
 public struct WeaponSpawnerTag : IComponentData { }
+
+public struct SpawnedWeaponEvent : IComponentData
+{
+    public WeaponType type;
+    public Entity weaponEntity;
+}

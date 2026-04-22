@@ -138,5 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile_Authoring
   Speed: 10
   Lifetime: 5
-  Damage: 10
-  Radius: 0.5
+  Radius: 0.1

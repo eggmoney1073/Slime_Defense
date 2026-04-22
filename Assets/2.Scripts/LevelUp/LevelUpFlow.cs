@@ -4,16 +4,28 @@ using Unity.Entities;
 public class LevelUpFlow : MonoBehaviour
 {
     [Header("참조")]
-    [SerializeField] private LevelUpOptionDatabase _database;
     [SerializeField] private LevelUpController _levelUpWindow;
     [SerializeField] private JoystickInput _joystickInput;
 
+    [Header("설정")]
+    [SerializeField] private string _databaseTag = "GameDatabase";
+    private LevelUpOptionDatabase _levelupOptionDatabase;
+    private WeaponDatabase _weaponDatabase;
     private int _pendingChoices;
     private bool _isShowing;
 
     private void Awake()
     {
         _levelUpWindow.OnSelectedOptionIndex += OnSelected;
+
+        GameObject databaseObject = GameObject.FindWithTag(_databaseTag);
+        if (databaseObject == null)
+        {
+            Debug.LogError($"Tag '{_databaseTag}'를 가진 GameObject를 찾을 수 없습니다.");
+            return;
+        }
+        _levelupOptionDatabase = databaseObject.GetComponent<LevelUpOptionDatabase>();
+        _weaponDatabase = databaseObject.GetComponent<WeaponDatabase>();
     }
 
     private void OnDestroy()
@@ -39,12 +51,12 @@ public class LevelUpFlow : MonoBehaviour
     {
         if (_isShowing) return;
         if (_pendingChoices <= 0) return;
-        if (_database == null || !_database.IsReady)
+        if (_levelupOptionDatabase == null || !_levelupOptionDatabase.IsReady)
         {
-            if (!_database.IsReady)
+            if (!_levelupOptionDatabase.IsReady)
             {
-                _database.OnReady -= TryShowChoiceWindow;
-                _database.OnReady += TryShowChoiceWindow;
+                _levelupOptionDatabase.OnReady -= TryShowChoiceWindow;
+                _levelupOptionDatabase.OnReady += TryShowChoiceWindow;
             }
             return;
         }
@@ -52,8 +64,8 @@ public class LevelUpFlow : MonoBehaviour
         _pendingChoices--;
         _isShowing = true;
 
-        int[] picked = LevelUpOptionPicker.Pick3(_database.LevelUpOptionDatas.Length);
-        _levelUpWindow.ShowWindow(_database.LevelUpOptionDatas, picked);
+        int[] picked = LevelUpOptionPicker.Pick3(_levelupOptionDatabase.LevelUpOptionDatas.Length);
+        _levelUpWindow.ShowWindow(_levelupOptionDatabase.LevelUpOptionDatas, picked);
     }
 
     private void OnSelected(int optionIndex)
@@ -61,7 +73,7 @@ public class LevelUpFlow : MonoBehaviour
         _levelUpWindow.HideWindow();
         _isShowing = false;
 
-        SendApplyRequestToECS(optionIndex);
+        SendApplyRequestToECS(_levelupOptionDatabase.LevelUpOptionDatas[optionIndex]);
 
         if (_pendingChoices > 0)
         {
@@ -75,7 +87,7 @@ public class LevelUpFlow : MonoBehaviour
         }
     }
 
-    private void SendApplyRequestToECS(int optionIndex)
+    private void SendApplyRequestToECS(LevelUpOptionData optionData)
     {
         World world = World.DefaultGameObjectInjectionWorld;
         if (world == null) return;
@@ -84,10 +96,9 @@ public class LevelUpFlow : MonoBehaviour
         Entity entity = entityManager.CreateEntity();
         entityManager.AddComponentData(entity, new UpgradeRequest
         {
-            optionIndex = optionIndex,
-            value = 1 // 나중에 레벨에 따라 달라질 수 있음
+            weaponEntity = _weaponDatabase.GetWeaponEntity(optionData.weaponType),
+            upgradeType = optionData.upgradeType,
+            value = optionData.value
         });
-
-        Debug.Log("레벨업 옵션 선택: " + optionIndex);
     }
 }

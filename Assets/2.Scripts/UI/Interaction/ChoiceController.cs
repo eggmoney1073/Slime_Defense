@@ -11,7 +11,7 @@ public class ChoiceController : MonoBehaviour
 
     public void SetChoice(int optionIndex, LevelUpOptionData data, Action<int> onButtonClicked)
     {
-        _weaponNameText.text = data.Type.ToString();
+        _weaponNameText.text = data.weaponType.ToString();
         _informationText.text = data.description;
 
         _choiceButton.onClick.RemoveAllListeners();

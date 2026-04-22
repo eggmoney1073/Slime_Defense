@@ -108,7 +108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 0.000016212, y: -46.753}
   m_SizeDelta: {x: 190, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4044947268390894224
@@ -152,7 +152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: -50}
+  m_AnchoredPosition: {x: 235, y: -46.753}
   m_SizeDelta: {x: 190, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3021084564687830467
@@ -196,7 +196,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195, y: -50}
+  m_AnchoredPosition: {x: -235, y: -46.753}
   m_SizeDelta: {x: 190, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2838013765349919120
@@ -219,14 +219,13 @@ GameObject:
   - component: {fileID: 9219604008830932543}
   - component: {fileID: 2137011320401345704}
   - component: {fileID: 1376846183099571922}
-  - component: {fileID: 756913275500730805}
   m_Layer: 5
   m_Name: LevelUpWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2840540081618907287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -283,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpFlow
   _database: {fileID: 1376846183099571922}
   _levelUpWindow: {fileID: 9219604008830932543}
+  _joystickInput: {fileID: 0}
 --- !u!114 &1376846183099571922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,19 +297,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpOptionDatabase
   _basePath: Assets/6.Data/Upgrade/MainWeapon/Option
   _optionCount: 10
---- !u!114 &756913275500730805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4748827407849584136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838382af0da97aa4f954846c8cceee28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelUpEcsBridge
-  _flow: {fileID: 2137011320401345704}
 --- !u!1 &6890584476314462044
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,8 +333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: -1000}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: -21.5919, y: -945.7664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7364079201280655517
 GameObject:

@@ -11,7 +11,7 @@ class WeaponSpawner_Baker : Baker<WeaponSpawner_Authoring>
         DynamicBuffer<WeaponPrefab> weaponPrefabs = AddBuffer<WeaponPrefab>(entity);
 
         for (int i = 0; i < authoring.WeaponPrefabs.Length; i++)
-        {      
+        {
             Entity weaponPrefab = GetEntity(authoring.WeaponPrefabs[i], TransformUsageFlags.Dynamic);
 
             weaponPrefabs.Add(new WeaponPrefab
@@ -19,7 +19,5 @@ class WeaponSpawner_Baker : Baker<WeaponSpawner_Authoring>
                 weaponEntity = weaponPrefab
             });
         }
-
-        //Debug.Log("무기 스포너 베이커 완료");
     }
 }

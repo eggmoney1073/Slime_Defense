@@ -36,9 +36,12 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
             projectileCount = authoring.projectileCount
         });
 
+        AddComponent(entity, new ECSWeaponType
+        {
+            type = authoring.weaponType
+        });
 
         AddComponent<WeaponTag>(entity);
-        AddComponent<ManualAimTag>(entity);
         AddComponent<WeaponEnabledTag>(entity);
     }
 }

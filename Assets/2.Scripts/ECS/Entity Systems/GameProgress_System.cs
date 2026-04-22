@@ -14,7 +14,7 @@ partial struct GameProgress_System : ISystem
                 kill = 0,
                 time = 0,
                 level = 1,
-                levelUpKillCount = 25,
+                levelUpKillCount = 10,
                 levelUpPercent = 0
             });
         }
@@ -41,7 +41,7 @@ partial struct GameProgress_System : ISystem
             int currentLevel = progress.ValueRO.level;
             progress.ValueRW.level = currentLevel + 1;
 
-            progress.ValueRW.levelUpKillCount = 25 + (progress.ValueRO.level - 1) * 5;
+            progress.ValueRW.levelUpKillCount += (progress.ValueRO.level - 1) * 5;
 
             levelUpsThisFrame++;
         }

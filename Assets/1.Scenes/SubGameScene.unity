@@ -316,9 +316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner_Authoring
   EnemyPrefab: {fileID: 662717058708750212, guid: 1ee0a5702ae2dd74184bb1b7ffa9d985, type: 3}
-  SpawnInterval: 0.1
-  MaxSpawnCount: 500
-  EnemyHealthSale: 0.5
+  SpawnInterval: 0.8
+  MaxSpawnCount: 1000
+  EnemyHealthSale: 0.3
 --- !u!1 &1880503204
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Authoring
   Speed: 0.5
-  Radius: 0.5
+  Radius: 0.3
 --- !u!1 &3869825817452726372
 GameObject:
   m_ObjectHideFlags: 0
