@@ -98,7 +98,7 @@ SlimeDefenseSystemGroup (SimulationSystemGroup 하위)
 | ✅ | 플레이어 조준 · 투사체 발사 | 2일 (03.26 ~ 03.27) | 2026.03.27 |
 | ✅ | 적 스폰 · 웨이포인트 이동 | 1일 (03.28) | 2026.03.28 |
 | ✅ | 충돌 · 데미지 · 사망 처리 | 7일 (03.29 ~ 04.04) | 2026.04.04 |
-| 🔲 | 경험치 · 레벨업 · 3지선다 UI | - | - |
+| ✅ | 경험치 · 레벨업 · 3지선다 UI | 13일 (04.10 ~ 04.22) | 2026.04.22 |
 | 🔲 | 타이머 · 승리/패배 처리 | - | - |
 | 🔲 | 강화 시스템 · 상점 UI | - | - |
 | 🔲 | UI 폴리싱 · 사운드 · 최적화 · 광고 부활 | - | - |
@@ -165,7 +165,7 @@ Input System : com.unity.inputsystem
 
         - IEnableComponent는 생성과 동시에 활성화 되기 때문에 LiveTag로 전환하여 해결
 
-- [ ] Enemy의 Damage 처리를 투사체에서 Damage를 버퍼에 Add 하는데, 여러 투사체에서 Add를 병렬 처리하다가 동시에 참조하는 문제
+- [✅] Enemy의 Damage 처리를 투사체에서 Damage를 버퍼에 Add 하는데, 여러 투사체에서 Add를 병렬 처리하다가 동시에 참조하는 문제
 
         - 투사체에선 Damage Add Request를 하고 Damage System에서 병렬로 Add하는 것으로 변경
         
