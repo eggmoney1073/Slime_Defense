@@ -6,6 +6,7 @@ using Unity.Transforms;
 
 [BurstCompile]
 [WithAll(typeof(EnemyTag))]
+[WithAll(typeof(LiveTag))]
 
 public partial struct GridBuild_Job : IJobEntity
 {
@@ -19,7 +20,7 @@ public partial struct GridBuild_Job : IJobEntity
         float3 position = transform.Position;
 
         int axisX = (int)math.floor(position.x / cellSize) + (gridWidth / 2);
-        int axisY = (int)math.floor(position.z / cellSize) + (gridWidth / 2);
+        int axisY = (int)math.floor(position.y / cellSize) + (gridWidth / 2);
 
         int index = axisX + gridWidth * axisY;
 

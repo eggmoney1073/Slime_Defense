@@ -31,7 +31,7 @@ public partial struct Collision_Job : IJobEntity
         float3 position = transform.Position;
 
         int centerX = (int)math.floor(position.x / _cellSize) + (_gridWidth / 2);
-        int centerY = (int)math.floor(position.z / _cellSize) + (_gridWidth / 2);
+        int centerY = (int)math.floor(position.y / _cellSize) + (_gridWidth / 2);
 
         int offsetY = -1;
         while (offsetY <= 1)

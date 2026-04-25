@@ -217,8 +217,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2840540081618907287}
   - component: {fileID: 9219604008830932543}
-  - component: {fileID: 2137011320401345704}
-  - component: {fileID: 1376846183099571922}
   m_Layer: 5
   m_Name: LevelUpWindow
   m_TagString: Untagged
@@ -268,35 +266,6 @@ MonoBehaviour:
   - {fileID: 3522697974029843633, guid: efa89dba4f5264f4091cb3d428766845, type: 3}
   - {fileID: 3522697974029843633, guid: 36d779c59ff9edc4baf8a8c6d8d53b2b, type: 3}
   _choiceWindow: {fileID: 6890584476314462044}
---- !u!114 &2137011320401345704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4748827407849584136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364ac651c187d744393e29da9d747832, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelUpFlow
-  _database: {fileID: 1376846183099571922}
-  _levelUpWindow: {fileID: 9219604008830932543}
-  _joystickInput: {fileID: 0}
---- !u!114 &1376846183099571922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4748827407849584136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503f574705fdb344ca485ad0e426079b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelUpOptionDatabase
-  _basePath: Assets/6.Data/Upgrade/MainWeapon/Option
-  _optionCount: 10
 --- !u!1 &6890584476314462044
 GameObject:
   m_ObjectHideFlags: 0

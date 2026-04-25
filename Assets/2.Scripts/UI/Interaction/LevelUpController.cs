@@ -18,7 +18,7 @@ public class LevelUpController : MonoBehaviour
     private void Awake()
     {
         _choices = new ChoiceController[3];
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public void ActivateWindow()
