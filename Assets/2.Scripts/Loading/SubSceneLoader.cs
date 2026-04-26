@@ -1,7 +1,5 @@
 using Unity.Entities;
 using Unity.Scenes;
-using Unity.Transforms;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SubSceneLoader : MonoBehaviour
@@ -21,7 +19,5 @@ public class SubSceneLoader : MonoBehaviour
         Unity.Entities.Hash128 guid = new Unity.Entities.Hash128(sceneGUID);
 
         SceneSystem.LoadSceneAsync(world.Unmanaged, guid);
-
-        var query = world.EntityManager.CreateEntityQuery(typeof(LocalTransform));
     }
 }

@@ -17,7 +17,6 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     [SerializeField] private Slider _loadingBar;
     [SerializeField] private GameObject _titleImage;
     [SerializeField] private GameObject _touchToStartText;
-    [SerializeField] private GameObject _touchToStartButton;
 
     [Header("Settings")]
     [SerializeField] private float _minLoadingTime = 2f;
@@ -88,19 +87,16 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     {
         float minTimeDelta = 1f / _minLoadingTime;
         float lodingBarValue = 0f;
+        float timeValue = 0f;
 
         while (lodingBarValue < 1f)
         {
-            lodingBarValue = Mathf.Min(LoadingSystem.LoadingProcess, minTimeDelta * Time.deltaTime);
+            timeValue += minTimeDelta * Time.deltaTime;
+            lodingBarValue = Mathf.Min(LoadingSystem.LoadingProcess, timeValue);
             _loadingBar.value = lodingBarValue;
             yield return null;
         }
 
-        // while (LoadingSystem.LoadingProcess > 0.0001f && LoadingSystem.LoadingProcess < 0.999f)
-        // {
-        //     _loadingBar.value = LoadingSystem.LoadingProcess;
-        //     yield return null;
-        // }
         _loadingBar.value = 1f;
 
         HideUI();
@@ -113,7 +109,5 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
         _canvasGroup = GetComponent<CanvasGroup>();
         _canvasGroup.alpha = 0f;
         _canvasGroup.blocksRaycasts = false;
-        _touchToStartText.SetActive(false);
-        _touchToStartButton.SetActive(false);
     }
 }
