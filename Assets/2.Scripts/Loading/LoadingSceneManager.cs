@@ -12,20 +12,15 @@ using UnityEngine.UI;
 /// 로딩씬은 언로드 하지 않고 계속 유지하므로 Update를 사용하지 않는다.
 public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
 {
-    [SerializeField]
-    Image _loadingBGImage;
-    [SerializeField]
-    Slider _loadingBar;
-    [SerializeField]
-    GameObject _titleImage;
-    [SerializeField]
-    GameObject _touchToStartText;
-    [SerializeField]
-    GameObject _touchToStartButton;
-    [SerializeField]
-    GameObject _eventSystem;
+    [Header("로딩 씬 UI 참조")]
+    [SerializeField] private Image _loadingBGImage;
+    [SerializeField] private Slider _loadingBar;
+    [SerializeField] private GameObject _titleImage;
+    [SerializeField] private GameObject _touchToStartText;
+    [SerializeField] private GameObject _touchToStartButton;
 
-
+    [Header("Settings")]
+    [SerializeField] private float _minLoadingTime = 2f;
 
     CanvasGroup _canvasGroup;
     Action _fadeOutCallBack;
@@ -91,17 +86,23 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
 
     IEnumerator Co_SetLoadingBar()
     {
-        while (LoadingSystem.LoadingProcess > 0.0001f && LoadingSystem.LoadingProcess < 0.999f)
+        float minTimeDelta = 1f / _minLoadingTime;
+        float lodingBarValue = 0f;
+
+        while (lodingBarValue < 1f)
         {
-            _loadingBar.value = LoadingSystem.LoadingProcess;
+            lodingBarValue = Mathf.Min(LoadingSystem.LoadingProcess, minTimeDelta * Time.deltaTime);
+            _loadingBar.value = lodingBarValue;
             yield return null;
         }
+
+        // while (LoadingSystem.LoadingProcess > 0.0001f && LoadingSystem.LoadingProcess < 0.999f)
+        // {
+        //     _loadingBar.value = LoadingSystem.LoadingProcess;
+        //     yield return null;
+        // }
         _loadingBar.value = 1f;
 
-        // 로딩 완료
-        // _touchToStartText.SetActive(true);
-        // _touchToStartButton.SetActive(true);
-        //_eventSystem.SetActive(false);
         HideUI();
     }
     #endregion

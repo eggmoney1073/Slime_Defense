@@ -14,7 +14,7 @@ public class LoadingSystem
         Scene_Title,
         Scene_DownLoad,
         Scene_Loading,
-        Scene_MainMenu,
+        Scene_Lobby,
         Scene_Game,
         Max
     }
@@ -125,7 +125,7 @@ public class LoadingSystem
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 Debug.Log("Loading scene loaded successfully.");
-                LoadAddressableScene(SceneName.Scene_MainMenu);
+                LoadAddressableScene(SceneName.Scene_Lobby);
             }
             else
             {
