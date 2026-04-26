@@ -1,0 +1,139 @@
+{
+    "version": 1,
+    "name": "SlimeDefenseInputSystem",
+    "maps": [
+        {
+            "name": "GamePlay",
+            "id": "c0a8ed49-5394-4ec4-862f-3117d8dafd20",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "482802d2-abbb-4da5-b00f-abec198e128e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "59aa3667-d91b-4106-ba01-13c8a58db848",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "39d9b04d-7bd8-48f2-8016-c5a63e90cafa",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a06c302f-48b4-4e19-8af3-fdf8c36fb8c8",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Pause",
+            "id": "bd200985-5cfd-467f-8371-db7352c0e166",
+            "actions": [
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "68ce2eb3-66d0-4258-99a0-4c64e1a26775",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8a56bb39-b935-4f1c-a05b-14ac59ee61e8",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Lobby",
+            "id": "d6273637-1a68-4c9e-8fc4-7a9682c78a71",
+            "actions": [
+                {
+                    "name": "Touch",
+                    "type": "Value",
+                    "id": "323e1b9f-b1e3-4bea-8d2b-db2907016d09",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bce04df2-c5ec-4731-8aae-d6418db0baa2",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Loading",
+            "id": "3d136e5b-528b-45fd-8deb-ce64a36ab13c",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "1ca96e7f-91c4-428c-ad08-38ede9f42106",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "19331b14-edd6-4492-b677-071605fb85bf",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
