@@ -56,9 +56,11 @@ public partial struct Collision_Job : IJobEntity
                         {
                             LocalTransform otherLocalTransform = _transformLookup[other];
                             float3 otherPosition = otherLocalTransform.Position;
+                            float2 otherPosition2D = new float2(otherPosition.x, otherPosition.y);
+                            float2 position2D = new float2(position.x, position.y);
 
                             float otherRadius = _radiusLookup[other].radius;
-                            float distanceSq = math.lengthsq(position - otherPosition);
+                            float distanceSq = math.lengthsq(otherPosition2D - position2D);
                             float sumRadius = collider.radius + otherRadius;
 
                             DynamicBuffer<Damaged> damagedBuffer = _damagedBufferLookup[other];
