@@ -42,7 +42,7 @@ public class LevelUpFlow : MonoBehaviour
 
         _levelUpWindow.ActivateWindow();
         _joystickInput.IsPaused = true;
-        TimeManager.Instance.SetPause();
+        GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.Pause);
 
         TryShowChoiceWindow();
     }
@@ -83,7 +83,7 @@ public class LevelUpFlow : MonoBehaviour
         {
             _levelUpWindow.DeactivateWindow();
             _joystickInput.IsPaused = false;
-            TimeManager.Instance.Resume();
+            GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.Playing);
         }
     }
 

@@ -27,4 +27,12 @@ public class SingletonGameobject<T> : MonoBehaviour where T : MonoBehaviour
 
         _uniqueInstance = GetComponent<T>();
     }
+
+    protected virtual void OnAwake()
+    {
+        if (_uniqueInstance == this)
+        {
+            _uniqueInstance = null;
+        }
+    }
 }

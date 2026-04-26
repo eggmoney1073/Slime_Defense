@@ -47,6 +47,6 @@ MonoBehaviour:
   weaponType: 0
   projectilePrefab: {fileID: 7265366914958867069, guid: 81832afc5c416074e95c190503c5d0e4, type: 3}
   cooldown: 1
-  damage: 200
+  damage: 100
   pierceCount: 1
   projectileCount: 1

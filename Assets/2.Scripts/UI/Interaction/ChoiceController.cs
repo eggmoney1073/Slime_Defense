@@ -15,6 +15,9 @@ public class ChoiceController : MonoBehaviour
         _informationText.text = data.description;
 
         _choiceButton.onClick.RemoveAllListeners();
-        _choiceButton.onClick.AddListener(() => onButtonClicked.Invoke(optionIndex));
+        _choiceButton.onClick.AddListener(() =>
+        {
+            onButtonClicked.Invoke(optionIndex);
+        });
     }
 }

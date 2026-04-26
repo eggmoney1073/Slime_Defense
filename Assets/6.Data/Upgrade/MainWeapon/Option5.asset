@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad2e5dd7e65ac943b8f738cf3ae24f0, type: 3}
   m_Name: Option5
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpOptionData
-  Type: 0
+  weaponType: 0
   rarity: 1
   upgradeType: 0
-  value: 20
-  description: Attack + 20%
+  value: 35
+  description: Attack + 35%

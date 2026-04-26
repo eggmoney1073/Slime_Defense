@@ -8,6 +8,7 @@ public struct GameProgress : IComponentData
     public int level;
     public int levelUpKillCount;
     public float levelUpPercent;
+    public int totalKill;
 }
 
 public struct LevelUpEvent : IComponentData
@@ -22,3 +23,6 @@ public struct UpgradeRequest : IComponentData
     public float value;
     public WeaponUpgradeType upgradeType;
 }
+
+public struct GameOverEvent : IComponentData { }
+public struct GameClearEvent : IComponentData { }

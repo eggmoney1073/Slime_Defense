@@ -11,11 +11,12 @@ public partial struct EnemyMove_Job : IJobEntity
 
     [Unity.Collections.ReadOnly]
     public BufferLookup<ECS_WayPoint> wayPointBufferLookup;
+    public EntityCommandBuffer.ParallelWriter ecbWriter;
 
-    public void Execute(ref LocalTransform transform, ref EnemyWayPoint follower, 
+    public void Execute(ref LocalTransform transform, ref EnemyWayPoint follower,
                         in ECS_PathReference pathReference, in ECS_MoveData moveData, in EntityIndex indexRef)
     {
-        if(!wayPointBufferLookup.HasBuffer(pathReference.path))
+        if (!wayPointBufferLookup.HasBuffer(pathReference.path))
         {
             return;
         }
@@ -28,7 +29,7 @@ public partial struct EnemyMove_Job : IJobEntity
             float3 currentPosition = transform.Position;
             float3 destPosition = wayPoints[currentIndex].nodePosition;
             destPosition.z += indexRef.index * 0.001f;
-            
+
             float speed = moveData.moveSpeed;
 
             float3 direction = destPosition - currentPosition;
@@ -47,7 +48,10 @@ public partial struct EnemyMove_Job : IJobEntity
 
                 if (nextIndex >= wayPoints.Length)
                 {
-                    nextIndex = 0;
+                    Entity gameOverEntity = ecbWriter.CreateEntity(indexRef.index);
+                    ecbWriter.AddComponent<GameOverEvent>(indexRef.index, gameOverEntity);
+
+                    nextIndex = currentIndex;
                 }
 
                 follower.currentIndex = nextIndex;

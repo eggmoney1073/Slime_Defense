@@ -13,11 +13,24 @@ partial struct GameProgress_System : ISystem
             {
                 kill = 0,
                 time = 0,
-                level = 1,
-                levelUpKillCount = 10,
-                levelUpPercent = 0
+                level = 0,
+                levelUpKillCount = 15,
+                levelUpPercent = 0,
+                totalKill = 0,
             });
         }
+
+
+        // 시작하자마자 레벨업 이벤트 발생시키기
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Unity.Collections.Allocator.Temp);
+        Entity levelUpEntity = ecb.CreateEntity();
+        ecb.AddComponent(levelUpEntity, new LevelUpEvent
+        {
+            levelUpCount = 1,
+            newLevel = 1
+        });
+        ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 
     public void OnUpdate(ref SystemState state)
@@ -64,6 +77,30 @@ partial struct GameProgress_System : ISystem
             });
             ecb.Playback(state.EntityManager);
             ecb.Dispose();
+        }
+
+        // 게임 오버 체크
+
+        EntityQuery gameOverEventQuery = SystemAPI.QueryBuilder().WithAll<GameOverEvent>().Build();
+        if (!gameOverEventQuery.IsEmptyIgnoreFilter)
+        {
+            if (GameFlowManager.Instance != null && GameFlowManager.Instance.CurrentGameState != GameFlowManager.GameState.GameOver)
+            {
+                GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.GameOver);
+            }
+            state.EntityManager.DestroyEntity(gameOverEventQuery);
+        }
+
+        // 게임 클리어 체크
+
+        EntityQuery gameClearEventQuery = SystemAPI.QueryBuilder().WithAll<GameClearEvent>().Build();
+        if (!gameClearEventQuery.IsEmptyIgnoreFilter)
+        {
+            if (GameFlowManager.Instance != null && GameFlowManager.Instance.CurrentGameState != GameFlowManager.GameState.Clear)
+            {
+                GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.Clear);
+            }
+            state.EntityManager.DestroyEntity(gameClearEventQuery);
         }
     }
 

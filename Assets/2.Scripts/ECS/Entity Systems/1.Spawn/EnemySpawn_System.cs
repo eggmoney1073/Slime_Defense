@@ -9,12 +9,14 @@ using Unity.Transforms;
 partial struct EnemySpawn_System : ISystem
 {
     EntityQuery _enemyQuery;
+    bool isClear;
     int _spawnIndex;
 
     public void OnCreate(ref SystemState state)
     {
         _enemyQuery = state.GetEntityQuery(ComponentType.ReadOnly<EnemyTag>());
         _spawnIndex = 0;
+        isClear = false;
     }
 
     public void OnUpdate(ref SystemState state)
@@ -78,6 +80,12 @@ partial struct EnemySpawn_System : ISystem
 
                     spawner.ValueRW.spawnCount += 1;
                 }
+            }
+            else if (!isClear)
+            {
+                Entity clearEntity = ecb.CreateEntity();
+                ecb.AddComponent<GameClearEvent>(clearEntity);
+                isClear = true;
             }
         }
 

@@ -5,7 +5,7 @@ public class PauseController : MonoBehaviour
     public bool IsPaused { get; private set; } = false;
     public void OnPauseButtonClicked()
     {
-        TimeManager.Instance.SetPause();
+        GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.Pause);
         IsPaused = true;
     }
 
