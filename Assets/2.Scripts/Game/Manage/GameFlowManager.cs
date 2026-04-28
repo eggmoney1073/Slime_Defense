@@ -53,4 +53,9 @@ public class GameFlowManager : SingletonGameobject<GameFlowManager>
     {
         _currentGameState = GameState.Ready;
     }
+
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
+    }
 }

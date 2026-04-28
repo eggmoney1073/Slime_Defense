@@ -86,6 +86,15 @@ public class LoadingSystem
             return;
         }
 
+        if (sceneName == SceneName.Scene_Lobby)
+        {
+            SoundManager.Instance.PlayBGM(SoundManager.BGMType.MainMenu);
+        }
+        else if (sceneName == SceneName.Scene_Game)
+        {
+            SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
+        }
+
         // 이미 로딩 중인지 확인
         if (_sceneLoadHandle.IsValid() && !_sceneLoadHandle.IsDone)
         {
@@ -102,7 +111,6 @@ public class LoadingSystem
 
         string sceneAddress = _sceneBaseAddress + sceneName.ToString() + ".unity";
 
-        //LoadingSceneManager.Instance.ShowUI(_onSceneLoadCompleted);
         LoadingSceneManager.Instance.ShowUI();
         _sceneLoadHandle = Addressables.LoadSceneAsync(sceneAddress, LoadSceneMode.Additive);
 
