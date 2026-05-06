@@ -21,16 +21,16 @@ partial struct GameProgress_System : ISystem
         }
 
 
-        // 시작하자마자 레벨업 이벤트 발생시키기
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Unity.Collections.Allocator.Temp);
-        Entity levelUpEntity = ecb.CreateEntity();
-        ecb.AddComponent(levelUpEntity, new LevelUpEvent
-        {
-            levelUpCount = 1,
-            newLevel = 1
-        });
-        ecb.Playback(state.EntityManager);
-        ecb.Dispose();
+        // // 시작하자마자 레벨업 이벤트 발생시키기
+        // EntityCommandBuffer ecb = new EntityCommandBuffer(Unity.Collections.Allocator.Temp);
+        // Entity levelUpEntity = ecb.CreateEntity();
+        // ecb.AddComponent(levelUpEntity, new LevelUpEvent
+        // {
+        //     levelUpCount = 1,
+        //     newLevel = 1
+        // });
+        // ecb.Playback(state.EntityManager);
+        // ecb.Dispose();
     }
 
     public void OnUpdate(ref SystemState state)
