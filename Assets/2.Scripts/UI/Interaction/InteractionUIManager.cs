@@ -43,4 +43,10 @@ public class InteractionUIManager : SingletonGameobject<InteractionUIManager>
             _gameClearWindow.ShowUI();
         });
     }
+
+    public void GoToLobby()
+    {
+        LoadingSystem.UnloadCurrentScene();
+        LoadingSystem.LoadAddressableScene(LoadingSystem.SceneName.Scene_Lobby);
+    }
 }

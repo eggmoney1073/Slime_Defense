@@ -24,7 +24,7 @@ public class GameClearWindow : MonoBehaviour, IWindow
 
     private void OnExitButtonClicked()
     {
-        LoadingSystem.LoadAddressableScene(LoadingSystem.SceneName.Scene_Lobby);
+        InteractionUIManager.Instance.GoToLobby();
         HideUI();
     }
 }
