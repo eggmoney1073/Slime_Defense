@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,7 +52,14 @@ public class GameFlowManager : SingletonGameobject<GameFlowManager>
 
     private void Start()
     {
-        _currentGameState = GameState.Ready;
+        _currentGameState = GameState.Playing;
+        StartCoroutine(ReadyGame(1f));
         SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
+    }
+
+    IEnumerator ReadyGame(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeGameState(GameState.Ready);
     }
 }
