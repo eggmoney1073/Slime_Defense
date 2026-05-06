@@ -41,6 +41,7 @@ public class TimeManager : SingletonGameobject<TimeManager>
             _gameFlowManager.SubscribeGameState(GameFlowManager.GameState.Pause, SetPause);
             _gameFlowManager.SubscribeGameState(GameFlowManager.GameState.GameOver, SetPause);
             _gameFlowManager.SubscribeGameState(GameFlowManager.GameState.Clear, SetPause);
+            _gameFlowManager.SubscribeGameState(GameFlowManager.GameState.LevelUp, SetPause);
         }
     }
 
@@ -53,6 +54,7 @@ public class TimeManager : SingletonGameobject<TimeManager>
             _gameFlowManager.UnsubscribeGameState(GameFlowManager.GameState.Pause, SetPause);
             _gameFlowManager.UnsubscribeGameState(GameFlowManager.GameState.GameOver, SetPause);
             _gameFlowManager.UnsubscribeGameState(GameFlowManager.GameState.Clear, SetPause);
+            _gameFlowManager.UnsubscribeGameState(GameFlowManager.GameState.LevelUp, SetPause);
         }
     }
 }

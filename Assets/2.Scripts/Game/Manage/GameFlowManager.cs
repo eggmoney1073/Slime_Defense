@@ -8,12 +8,12 @@ public class GameFlowManager : SingletonGameobject<GameFlowManager>
         Ready,
         Playing,
         Pause,
+        LevelUp,
         GameOver,
         Clear
     }
 
     public GameState CurrentGameState { get { return _currentGameState; } }
-    [SerializeField]
     private GameState _currentGameState;
     private Dictionary<GameState, System.Action> _gameStateActions = new Dictionary<GameState, System.Action>();
 

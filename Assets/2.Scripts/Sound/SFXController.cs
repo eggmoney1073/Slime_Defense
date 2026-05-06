@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class SFXController : MonoBehaviour
 {
+    [Header("Sound Settings")]
+    [SerializeField] private float _hitSoundCooldown = 0.1f;
+    [SerializeField] private float _deathSoundCooldown = 0.5f;
+
     private EntityManager _entityManager;
     private Entity _soundBufferEntity;
     private bool _isReady;
@@ -55,8 +59,16 @@ public class SFXController : MonoBehaviour
             if (playHit && playDeath) break;
         }
 
-        if (playHit) SoundManager.Instance.PlaySFX(SoundManager.SFXType.EnemyHit);
-        if (playDeath) SoundManager.Instance.PlaySFX(SoundManager.SFXType.EnemyDeath);
+        if (playHit && Time.time >= _nextHitSoundTime)
+        {
+            SoundManager.Instance.PlaySFX(SoundManager.SFXType.EnemyHit);
+            _nextHitSoundTime = Time.time + _hitSoundCooldown;
+        }
+        if (playDeath && Time.time >= _nextDeathSoundTime)
+        {
+            SoundManager.Instance.PlaySFX(SoundManager.SFXType.EnemyDeath);
+            _nextDeathSoundTime = Time.time + _deathSoundCooldown;
+        }
 
         buffer.Clear();
     }

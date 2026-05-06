@@ -6,19 +6,21 @@ using UnityEngine.AddressableAssets;
 
 public class DownLoadManager : MonoBehaviour
 {
-    public GameObject _downLoadWindow;
-    public GameObject _completeWindow;
-    public TextMeshProUGUI _patchSizeText;
+    [SerializeField] private GameObject _downLoadWindow;
+    [SerializeField] private GameObject _completeWindow;
+    [SerializeField] private TextMeshProUGUI _patchSizeText;
+    [SerializeField] private GameObject _downLoadingWindow;
 
-    public List<AssetLabelReference> _labels;
+    [SerializeField] private List<AssetLabelReference> _labels;
 
-    long patchSize;
-    Dictionary<string, long> _patchMap = new Dictionary<string, long>();
+    private long patchSize;
+    private Dictionary<string, long> _patchMap = new Dictionary<string, long>();
 
     void Start()
     {
         _downLoadWindow.SetActive(false);
         _completeWindow.SetActive(false);
+        _downLoadingWindow.SetActive(false);
         LoadingSystem.InitializeAddressables(OnAddressableInitComplete);
     }
 
@@ -31,7 +33,7 @@ public class DownLoadManager : MonoBehaviour
     public void Button_DownLoad()
     {
         StartCoroutine(Co_DownloadAssets());
-        
+        _downLoadingWindow.SetActive(true);
     }
 
     public void Button_GoNext()
@@ -101,10 +103,11 @@ public class DownLoadManager : MonoBehaviour
         Debug.Log("All downloads completed.");
         CompleteAll();
     }
-    
+
     void CompleteAll()
     {
         _downLoadWindow.SetActive(false);
+        _downLoadingWindow.SetActive(false);
         _completeWindow.SetActive(true);
         StartCoroutine(Co_GetLoadingResource());
     }

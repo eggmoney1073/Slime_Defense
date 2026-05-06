@@ -5,7 +5,6 @@ public class LevelUpFlow : MonoBehaviour
 {
     [Header("참조")]
     [SerializeField] private LevelUpController _levelUpWindow;
-    [SerializeField] private JoystickInput _joystickInput;
 
     [Header("설정")]
     [SerializeField] private string _databaseTag = "GameDatabase";
@@ -41,8 +40,7 @@ public class LevelUpFlow : MonoBehaviour
         _pendingChoices += count;
 
         _levelUpWindow.ActivateWindow();
-        _joystickInput.IsPaused = true;
-        GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.Pause);
+        GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.LevelUp);
 
         TryShowChoiceWindow();
     }
@@ -82,7 +80,6 @@ public class LevelUpFlow : MonoBehaviour
         else
         {
             _levelUpWindow.DeactivateWindow();
-            _joystickInput.IsPaused = false;
             GameFlowManager.Instance.ChangeGameState(GameFlowManager.GameState.Playing);
         }
     }
