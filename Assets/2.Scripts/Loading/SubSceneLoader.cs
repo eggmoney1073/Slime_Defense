@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SubSceneLoader : MonoBehaviour
 {
-    [SerializeField] SubScene subScene;
+    [SerializeField] string sceneGUID;
 
     void Start()
     {
-        var world = World.DefaultGameObjectInjectionWorld;
+        World world = World.DefaultGameObjectInjectionWorld;
 
         if (world == null)
         {
@@ -16,8 +16,8 @@ public class SubSceneLoader : MonoBehaviour
             return;
         }
 
-        var sceneGUID = subScene.SceneGUID;
+        Unity.Entities.Hash128 guid = new Unity.Entities.Hash128(sceneGUID);
 
-        SceneSystem.LoadSceneAsync(world.Unmanaged, sceneGUID);
+        SceneSystem.LoadSceneAsync(world.Unmanaged, guid);
     }
 }
