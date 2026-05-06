@@ -53,13 +53,16 @@ public class GameFlowManager : SingletonGameobject<GameFlowManager>
     private void Start()
     {
         _currentGameState = GameState.Playing;
-        StartCoroutine(ReadyGame(1f));
+        StartCoroutine(ReadyGame());
         SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
     }
 
-    IEnumerator ReadyGame(float delay)
+    IEnumerator ReadyGame()
     {
-        yield return new WaitForSeconds(delay);
+        for (int i = 0; i < 3; i++)
+        {
+            yield return null;
+        }
         ChangeGameState(GameState.Ready);
     }
 }
