@@ -6,6 +6,8 @@ public class InteractionUIManager : SingletonGameobject<InteractionUIManager>
     [SerializeField] private PauseWindowController _pauseController;
     [SerializeField] private LevelUpController _levelUpController;
     [SerializeField] private JoystickInput _joystickInput;
+    [SerializeField] private GameOverWindow _gameOverWindow;
+    [SerializeField] private GameClearWindow _gameClearWindow;
 
     void Start()
     {
@@ -29,6 +31,16 @@ public class InteractionUIManager : SingletonGameobject<InteractionUIManager>
         GameFlowManager.Instance.SubscribeGameState(GameFlowManager.GameState.LevelUp, () =>
         {
             _joystickInput.IsPaused = true;
+        });
+        GameFlowManager.Instance.SubscribeGameState(GameFlowManager.GameState.GameOver, () =>
+        {
+            _joystickInput.IsPaused = true;
+            _gameOverWindow.ShowUI();
+        });
+        GameFlowManager.Instance.SubscribeGameState(GameFlowManager.GameState.Clear, () =>
+        {
+            _joystickInput.IsPaused = true;
+            _gameClearWindow.ShowUI();
         });
     }
 }

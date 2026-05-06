@@ -49,13 +49,9 @@ public class GameFlowManager : SingletonGameobject<GameFlowManager>
         }
     }
 
-    protected override void OnAwake()
-    {
-        _currentGameState = GameState.Ready;
-    }
-
     private void Start()
     {
+        _currentGameState = GameState.Ready;
         SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
     }
 }

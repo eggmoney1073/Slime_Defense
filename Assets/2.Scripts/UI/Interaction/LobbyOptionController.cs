@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LobbyOptionController : MonoBehaviour
+public class LobbyOptionController : MonoBehaviour, IWindow
 {
     [Header("References")]
     [SerializeField] private Slider _volumeSliderBGM;

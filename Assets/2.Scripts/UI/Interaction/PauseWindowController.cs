@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseWindowController : MonoBehaviour
+public class PauseWindowController : MonoBehaviour, IWindow
 {
     [Header("References")]
     [SerializeField] private Slider _volumeSliderBGM;
