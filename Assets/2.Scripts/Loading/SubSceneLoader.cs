@@ -16,7 +16,10 @@ public class SubSceneLoader : MonoBehaviour
             return;
         }
 
-        SceneSystem.LoadParameters loadParameters = new SceneSystem.LoadParameters();
+        SceneSystem.LoadParameters loadParameters = new SceneSystem.LoadParameters
+        {
+            Flags = SceneLoadFlags.LoadAdditive
+        };
 
         SceneSystem.LoadSceneAsync(world.Unmanaged, _sceneReference, loadParameters);
     }
