@@ -20,11 +20,6 @@ public class WeaponDatabase : MonoBehaviour
 
     public Entity GetWeaponEntity(WeaponType type)
     {
-        return _weaponEntityDict[type];
-    }
-
-    private void Update()
-    {
         using var events = _entityQuery.ToComponentDataArray<SpawnedWeaponEvent>(Allocator.Temp);
         using var entities = _entityQuery.ToEntityArray(Allocator.Temp);
 
@@ -33,5 +28,19 @@ public class WeaponDatabase : MonoBehaviour
             _weaponEntityDict.Add(events[i].type, events[i].weaponEntity);
             _entityManager.DestroyEntity(entities[i]);
         }
+
+        return _weaponEntityDict[type];
     }
+
+    // private void Update()
+    // {
+    //     using var events = _entityQuery.ToComponentDataArray<SpawnedWeaponEvent>(Allocator.Temp);
+    //     using var entities = _entityQuery.ToEntityArray(Allocator.Temp);
+
+    //     for (int i = 0; i < events.Length; i++)
+    //     {
+    //         _weaponEntityDict.Add(events[i].type, events[i].weaponEntity);
+    //         _entityManager.DestroyEntity(entities[i]);
+    //     }
+    // }
 }
