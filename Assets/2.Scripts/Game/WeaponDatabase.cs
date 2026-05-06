@@ -29,6 +29,12 @@ public class WeaponDatabase : MonoBehaviour
             _entityManager.DestroyEntity(entities[i]);
         }
 
+        if (!_weaponEntityDict.ContainsKey(type))
+        {
+            Debug.LogError($"Weapon type {type} not found in database.");
+            return Entity.Null;
+        }
+
         return _weaponEntityDict[type];
     }
 
