@@ -1495,7 +1495,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50abea46649a9d4abcca078f0601b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubSceneLoader
-  _sceneGUID: 73eda0c52b1dddd429f0e1933666822d
+  _sceneReference:
+    Id:
+      GlobalId:
+        SceneObjectIdentifier0: 102900000
+        SceneObjectIdentifier1: 0
+        AssetGUID:
+          Value:
+            x: 1544216119
+            y: 1306382770
+            z: 958271378
+            w: 3525863011
+        IdentifierType: 1
+      GenerationType: 4
 --- !u!1001 &26403206906461160
 PrefabInstance:
   m_ObjectHideFlags: 0

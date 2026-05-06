@@ -1,23 +1,23 @@
 using Unity.Entities;
+using Unity.Entities.Serialization;
 using Unity.Scenes;
 using UnityEngine;
 
 public class SubSceneLoader : MonoBehaviour
 {
-    [SerializeField] string _sceneGUID = "73eda0c52b1dddd429f0e1933666822d";
+    [SerializeField] EntitySceneReference _sceneReference;
 
     void Start()
     {
         World world = World.DefaultGameObjectInjectionWorld;
 
-        if (world == null || string.IsNullOrEmpty(_sceneGUID))
+        if (world == null)
         {
             return;
         }
 
-        Unity.Entities.Hash128 guid = new Unity.Entities.Hash128(_sceneGUID);
         SceneSystem.LoadParameters loadParameters = new SceneSystem.LoadParameters();
 
-        SceneSystem.LoadSceneAsync(world.Unmanaged, guid, loadParameters);
+        SceneSystem.LoadSceneAsync(world.Unmanaged, _sceneReference, loadParameters);
     }
 }
