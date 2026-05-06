@@ -1460,7 +1460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2009874914}
-  - component: {fileID: 2009874913}
+  - component: {fileID: 2009874915}
   m_Layer: 0
   m_Name: SubSceneLoader
   m_TagString: Untagged
@@ -1468,19 +1468,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2009874913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009874912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c50abea46649a9d4abcca078f0601b25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SubSceneLoader
-  sceneGUID: 73eda0c52b1dddd429f0e1933666822d
 --- !u!4 &2009874914
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,6 +1483,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2009874915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009874912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536c2d6e7099f248b929e617f7bf1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubSceneTriggerAuthoring
+  _subSceneAsset: {fileID: 102900000, guid: 73eda0c52b1dddd429f0e1933666822d, type: 3}
 --- !u!1001 &26403206906461160
 PrefabInstance:
   m_ObjectHideFlags: 0
