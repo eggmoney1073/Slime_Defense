@@ -1,6 +1,8 @@
 using Unity.Burst;
 using Unity.Entities;
 using DefineEnums;
+using System.Diagnostics;
+using UnityEngine;
 
 [BurstCompile]
 [UpdateInGroup(typeof(SpawnSystemGroup))]
@@ -29,8 +31,7 @@ partial struct WeaponSpawn_System : ISystem
                 Entity weaponEntity = prefabBuffer[i].weaponEntity;
 
                 Entity instantiatedWeapon = entityCommandBuffer.Instantiate(weaponEntity);
-
-                // 무기 생성 이벤트
+                UnityEngine.Debug.Log($"Instantiated Weapon Entity: {instantiatedWeapon}");
                 Entity entity = entityCommandBuffer.CreateEntity();
                 entityCommandBuffer.AddComponent(entity, new SpawnedWeaponEvent
                 {
