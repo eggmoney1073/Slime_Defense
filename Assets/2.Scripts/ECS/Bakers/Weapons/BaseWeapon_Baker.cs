@@ -1,6 +1,4 @@
 using Unity.Entities;
-using Unity.VisualScripting;
-using UnityEngine;
 
 class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
 {
@@ -43,5 +41,6 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
 
         AddComponent<WeaponTag>(entity);
         AddComponent<WeaponEnabledTag>(entity);
+        UnityEngine.Debug.Log("무기 베이커 실행됨");
     }
 }

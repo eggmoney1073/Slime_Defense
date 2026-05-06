@@ -31,19 +31,19 @@ partial struct WeaponSpawn_System : ISystem
                 Entity weaponEntity = prefabBuffer[i].weaponEntity;
 
                 Entity instantiatedWeapon = entityCommandBuffer.Instantiate(weaponEntity);
-                UnityEngine.Debug.Log($"Instantiated Weapon Entity: {instantiatedWeapon}");
                 Entity entity = entityCommandBuffer.CreateEntity();
                 entityCommandBuffer.AddComponent(entity, new SpawnedWeaponEvent
                 {
                     type = (WeaponType)i,
                     weaponEntity = instantiatedWeapon
                 });
+                _isInitialized = true;
             }
         }
 
         entityCommandBuffer.Playback(state.EntityManager);
         entityCommandBuffer.Dispose();
 
-        _isInitialized = true;
+
     }
 }
