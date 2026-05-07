@@ -107,6 +107,27 @@ public class LoadingSystem
     {
         _isChangingScene = true;
 
+        LoadingSceneManager.Instance.ShowUI();
+
+        bool wasGameScene = _currentContentScene == SceneName.Scene_Game;
+
+        // 1. 기존 GameScene / LobbyScene 먼저 언로드
+        if (_contentSceneHandle.IsValid())
+        {
+            yield return Addressables.UnloadSceneAsync(_contentSceneHandle, true);
+            _contentSceneHandle = default;
+            _currentContentScene = SceneName.None;
+        }
+
+        // 2. GameScene이 사라진 다음 ECS World 리셋
+        if (wasGameScene)
+        {
+            yield return null;
+            yield return EcsWorldResetter.ResetDefaultWorldRoutine();
+            yield return null;
+        }
+
+        // 3. BGM 변경
         if (sceneName == SceneName.Scene_Lobby)
         {
             SoundManager.Instance.PlayBGM(SoundManager.BGMType.MainMenu);
@@ -116,23 +137,7 @@ public class LoadingSystem
             SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
         }
 
-        // 기존 코드처럼 로드 전에 ShowUI만 호출
-        LoadingSceneManager.Instance.ShowUI();
-
-        // 게임씬에서 나갈 때 ECS SubScene 먼저 언로드
-        if (_currentContentScene == SceneName.Scene_Game)
-        {
-            yield return EcsWorldResetter.ResetDefaultWorldRoutine();
-        }
-
-        // 기존 컨텐츠 씬 언로드 완료까지 대기
-        if (_contentSceneHandle.IsValid())
-        {
-            yield return Addressables.UnloadSceneAsync(_contentSceneHandle, true);
-            _contentSceneHandle = default;
-            _currentContentScene = SceneName.None;
-        }
-
+        // 4. 새 씬 로드
         string sceneAddress = _sceneBaseAddress + sceneName.ToString() + ".unity";
 
         _contentSceneHandle = Addressables.LoadSceneAsync(
