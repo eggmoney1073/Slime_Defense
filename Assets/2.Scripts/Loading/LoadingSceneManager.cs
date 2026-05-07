@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-//using UnityEngine.UIElements;
 
 /// <summary>
 /// 로딩 씬을 관리하는 매니저
@@ -20,94 +17,190 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
 
     [Header("Settings")]
     [SerializeField] private float _minLoadingTime = 2f;
+    [SerializeField] private float _fadeOutDuration = 1f;
 
-    CanvasGroup _canvasGroup;
-    Action _fadeOutCallBack;
+    private CanvasGroup _canvasGroup;
+    private Action _fadeOutCallBack;
 
+    private Coroutine _loadingBarCoroutine;
+    private Coroutine _fadeCoroutine;
 
-    #region [ Loading Fuction ]    
+    private bool _isHiding;
+
+    #region [ Loading Function ]
 
     /// <summary>
     /// UI 보이기
     /// </summary>
     public void ShowUI(Action fadeOutCallBack = null)
     {
+        EnsureCanvasGroup();
+
+        StopLoadingBarCoroutine();
+        StopFadeCoroutine();
+
         SetRandomBG();
+
         _fadeOutCallBack = fadeOutCallBack;
-        StartCoroutine(Co_SetLoadingBar());
+        _isHiding = false;
+
+        if (_titleImage != null)
+        {
+            _titleImage.SetActive(false);
+        }
+
+        if (_touchToStartText != null)
+        {
+            _touchToStartText.SetActive(false);
+        }
+
+        _loadingBar.value = 0f;
+
+        _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
-        //_eventSystem.SetActive(true);
+        _canvasGroup.interactable = true;
+
+        _loadingBarCoroutine = StartCoroutine(Co_SetLoadingBar());
     }
 
-    void SetRandomBG()
+    private void SetRandomBG()
     {
+        if (_loadingBGImage == null)
+        {
+            return;
+        }
+
         int randomIndex = UnityEngine.Random.Range(0, LoadingResourceManager._loadingBGCount);
         _loadingBGImage.sprite = LoadingResourceManager.GetLoadingBG(randomIndex);
     }
 
     public void HideUI()
     {
-        StartCoroutine(Co_FadeOut(1f));
-        _canvasGroup.blocksRaycasts = false;
-        _fadeOutCallBack?.Invoke();
+        RequestHideUI(true);
     }
 
-    IEnumerator Co_FadeIn(float duration)
+    private void RequestHideUI(bool stopLoadingCoroutine)
     {
-        float elapsed = 0f;
-        while (elapsed < duration)
+        EnsureCanvasGroup();
+
+        if (_isHiding)
         {
-            elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            _canvasGroup.alpha = Mathf.Lerp(0f, 1f, t);
-            yield return null;
+            return;
         }
-        _canvasGroup.alpha = 1f;
 
-        if (_titleImage != null)
-            Destroy(_titleImage);
+        _isHiding = true;
 
-        StartCoroutine(Co_SetLoadingBar());
+        if (stopLoadingCoroutine)
+        {
+            StopLoadingBarCoroutine();
+        }
+
+        StopFadeCoroutine();
+
+        _fadeCoroutine = StartCoroutine(Co_FadeOut(_fadeOutDuration));
     }
 
-    IEnumerator Co_FadeOut(float duration)
+    private IEnumerator Co_FadeOut(float duration)
     {
         float elapsed = 0f;
-        while (elapsed < duration)
+        float startAlpha = _canvasGroup.alpha;
+        float fadeDuration = Mathf.Max(duration, 0.01f);
+
+        while (elapsed < fadeDuration)
         {
             elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            _canvasGroup.alpha = Mathf.Lerp(1f, 0f, t);
+
+            float t = Mathf.Clamp01(elapsed / fadeDuration);
+            _canvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, t);
+
             yield return null;
         }
+
         _canvasGroup.alpha = 0f;
+        _canvasGroup.blocksRaycasts = false;
+        _canvasGroup.interactable = false;
+
+        _fadeCoroutine = null;
+
+        Action callBack = _fadeOutCallBack;
+        _fadeOutCallBack = null;
+
+        callBack?.Invoke();
     }
 
-    IEnumerator Co_SetLoadingBar()
+    private IEnumerator Co_SetLoadingBar()
     {
-        float minTimeDelta = 1f / _minLoadingTime;
-        float lodingBarValue = 0f;
+        float minLoadingTime = Mathf.Max(_minLoadingTime, 0.01f);
+        float minTimeDelta = 1f / minLoadingTime;
+
+        float loadingBarValue = 0f;
         float timeValue = 0f;
 
-        while (lodingBarValue < 1f)
+        while (loadingBarValue < 1f && !_isHiding)
         {
-            timeValue += minTimeDelta * Time.deltaTime;
-            lodingBarValue = Mathf.Min(LoadingSystem.LoadingProcess, timeValue);
-            _loadingBar.value = lodingBarValue;
+            timeValue += minTimeDelta * Time.unscaledDeltaTime;
+            timeValue = Mathf.Clamp01(timeValue);
+
+            float processValue = Mathf.Clamp01(LoadingSystem.LoadingProcess);
+            float nextValue = Mathf.Min(processValue, timeValue);
+
+            if (nextValue > loadingBarValue)
+            {
+                loadingBarValue = nextValue;
+                _loadingBar.value = loadingBarValue;
+            }
+
             yield return null;
         }
 
-        _loadingBar.value = 1f;
+        if (!_isHiding)
+        {
+            _loadingBar.value = 1f;
+            _loadingBarCoroutine = null;
 
-        HideUI();
+            RequestHideUI(false);
+        }
     }
+
     #endregion
 
-
-    void Start()
+    private void Start()
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
+        EnsureCanvasGroup();
+
         _canvasGroup.alpha = 0f;
         _canvasGroup.blocksRaycasts = false;
+        _canvasGroup.interactable = false;
+
+        if (_loadingBar != null)
+        {
+            _loadingBar.value = 0f;
+        }
+    }
+
+    private void EnsureCanvasGroup()
+    {
+        if (_canvasGroup == null)
+        {
+            _canvasGroup = GetComponent<CanvasGroup>();
+        }
+    }
+
+    private void StopLoadingBarCoroutine()
+    {
+        if (_loadingBarCoroutine != null)
+        {
+            StopCoroutine(_loadingBarCoroutine);
+            _loadingBarCoroutine = null;
+        }
+    }
+
+    private void StopFadeCoroutine()
+    {
+        if (_fadeCoroutine != null)
+        {
+            StopCoroutine(_fadeCoroutine);
+            _fadeCoroutine = null;
+        }
     }
 }

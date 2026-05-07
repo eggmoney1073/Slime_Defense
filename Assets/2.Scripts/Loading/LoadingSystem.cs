@@ -32,17 +32,13 @@ public class LoadingSystem
 
     public static Action _onSceneLoadCompleted;
 
+    static float _loadingProcess = 0f;
+
     public static float LoadingProcess
     {
         get
         {
-            if (_contentSceneHandle.IsValid())
-                return _contentSceneHandle.PercentComplete;
-
-            if (_loadingSceneHandle.IsValid())
-                return _loadingSceneHandle.PercentComplete;
-
-            return 0f;
+            return _loadingProcess;
         }
     }
 
@@ -106,6 +102,7 @@ public class LoadingSystem
     static IEnumerator ChangeContentScene(SceneName sceneName)
     {
         _isChangingScene = true;
+        _loadingProcess = 0f;
 
         LoadingSceneManager.Instance.ShowUI();
 
@@ -114,17 +111,39 @@ public class LoadingSystem
         // 1. 기존 GameScene / LobbyScene 먼저 언로드
         if (_contentSceneHandle.IsValid())
         {
-            yield return Addressables.UnloadSceneAsync(_contentSceneHandle, true);
+            AsyncOperationHandle<SceneInstance> unloadHandle = Addressables.UnloadSceneAsync(_contentSceneHandle, true);
+
+            while (!unloadHandle.IsDone)
+            {
+                _loadingProcess = Mathf.Lerp(0f, 0.2f, unloadHandle.PercentComplete);
+                yield return null;
+            }
+
             _contentSceneHandle = default;
             _currentContentScene = SceneName.None;
+            _loadingProcess = 0.2f;
+        }
+        else
+        {
+            _loadingProcess = 0.2f;
         }
 
         // 2. GameScene이 사라진 다음 ECS World 리셋
         if (wasGameScene)
         {
             yield return null;
+
+            _loadingProcess = 0.3f;
+
             yield return EcsWorldResetter.ResetDefaultWorldRoutine();
+
             yield return null;
+
+            _loadingProcess = 0.4f;
+        }
+        else
+        {
+            _loadingProcess = 0.4f;
         }
 
         // 3. BGM 변경
@@ -145,7 +164,13 @@ public class LoadingSystem
             LoadSceneMode.Additive
         );
 
-        yield return _contentSceneHandle;
+        while (!_contentSceneHandle.IsDone)
+        {
+            _loadingProcess = Mathf.Lerp(0.4f, 1f, _contentSceneHandle.PercentComplete);
+            yield return null;
+        }
+
+        _loadingProcess = 1f;
 
         OnSceneLoadCompleted(_contentSceneHandle);
 
