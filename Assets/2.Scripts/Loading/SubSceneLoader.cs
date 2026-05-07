@@ -3,15 +3,18 @@ using Unity.Entities.Serialization;
 using Unity.Scenes;
 using UnityEngine;
 
-public class SubSceneLoader : MonoBehaviour
+public class SubSceneLoader : SingletonGameobject<SubSceneLoader>
 {
     [SerializeField] EntitySceneReference _sceneReference;
 
+    World _world;
+    Entity _loadedSceneEntity = Entity.Null;
+
     void Start()
     {
-        World world = World.DefaultGameObjectInjectionWorld;
+        _world = World.DefaultGameObjectInjectionWorld;
 
-        if (world == null)
+        if (_world == null)
         {
             return;
         }
@@ -21,6 +24,24 @@ public class SubSceneLoader : MonoBehaviour
             Flags = SceneLoadFlags.LoadAdditive
         };
 
-        SceneSystem.LoadSceneAsync(world.Unmanaged, _sceneReference, loadParameters);
+        _loadedSceneEntity = SceneSystem.LoadSceneAsync(_world.Unmanaged, _sceneReference, loadParameters);
+    }
+
+    public void UnloadSubScene()
+    {
+        if (_world == null || !_world.IsCreated)
+        {
+            _loadedSceneEntity = Entity.Null;
+            return;
+        }
+
+        EntityManager entityManager = _world.EntityManager;
+
+        if (_loadedSceneEntity != Entity.Null && entityManager.Exists(_loadedSceneEntity))
+        {
+            SceneSystem.UnloadScene(_world.Unmanaged, _loadedSceneEntity, SceneSystem.UnloadParameters.DestroyMetaEntities);
+        }
+
+        _loadedSceneEntity = Entity.Null;
     }
 }

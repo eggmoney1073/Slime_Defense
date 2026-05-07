@@ -52,8 +52,8 @@ public class GameFlowManager : SingletonGameobject<GameFlowManager>
 
     private void Start()
     {
-        _currentGameState = GameState.Ready;
-        StartCoroutine(PlayGame(1f));
+        _currentGameState = GameState.Playing;
+        //StartCoroutine(PlayGame(1f));
         SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
     }
 

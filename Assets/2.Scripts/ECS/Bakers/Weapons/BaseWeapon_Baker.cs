@@ -41,6 +41,5 @@ class BaseWeapon_Baker : Baker<BaseWeapon_Authoring>
 
         AddComponent<WeaponTag>(entity);
         AddComponent<WeaponEnabledTag>(entity);
-        UnityEngine.Debug.Log("무기 베이커 실행됨");
     }
 }

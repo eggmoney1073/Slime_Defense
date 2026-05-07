@@ -21,35 +21,42 @@ public class LoadingSystem
 
     static bool _isAdreessableInitializeComplete = false;
     static bool _isInitializing = false;
+    static bool _isChangingScene = false;
+
     static string _sceneBaseAddress = "Assets/1.Scenes/";
-    static AsyncOperationHandle<SceneInstance> _sceneLoadHandle;
+
+    // 로딩씬은 계속 유지
+    static AsyncOperationHandle<SceneInstance> _loadingSceneHandle;
+
+    // 로비/게임씬만 교체
+    static AsyncOperationHandle<SceneInstance> _contentSceneHandle;
+
+    static SceneName _currentContentScene = SceneName.None;
+
     public static Action _onSceneLoadCompleted;
 
-    /// <summary>
-    /// 로딩 진행률
-    /// </summary>
     public static float LoadingProcess
     {
         get
         {
-            if (_sceneLoadHandle.IsValid())
-                return _sceneLoadHandle.PercentComplete;
-            else
-                return 0f;
+            if (_contentSceneHandle.IsValid())
+                return _contentSceneHandle.PercentComplete;
+
+            if (_loadingSceneHandle.IsValid())
+                return _loadingSceneHandle.PercentComplete;
+
+            return 0f;
         }
     }
 
-    /// <summary>
-    /// Addressables 초기화
-    /// </summary>
     public static void InitializeAddressables(Action onCompleted = null)
     {
-        // 이미 초기화 중인지 확인
         if (_isInitializing)
             return;
 
-        AsyncOperationHandle handle = Addressables.InitializeAsync();
         _isInitializing = true;
+
+        AsyncOperationHandle handle = Addressables.InitializeAsync();
 
         handle.Completed += result =>
         {
@@ -64,75 +71,34 @@ public class LoadingSystem
                 _isAdreessableInitializeComplete = false;
                 Debug.LogError("Failed to initialize Addressables.");
             }
+
             _isInitializing = false;
         };
     }
 
-
     /// <summary>
-    /// 씬 로드 시도
+    /// 타이틀에서 최초 1회 호출.
+    /// LoadingScene은 Single로 로드해서 타이틀을 밀어내고,
+    /// 이후 Lobby/Game은 Additive로 교체한다.
     /// </summary>
-    /// <param name="sceneName"></param>
-    public static void LoadAddressableScene(SceneName sceneName)
+    public static void LoadAddressableLoadingScene()
     {
-        // 씬 이름 유효성 검사
-        // Title 씬은 로드하지 않음
-        // Loading 씬은 단독으로 로드
-        if (sceneName == SceneName.None || sceneName == SceneName.Max
-            || sceneName == SceneName.Scene_Title || sceneName == SceneName.Scene_Loading
-            || sceneName == SceneName.Scene_DownLoad)
-        {
-            Debug.LogError("Invalid scene name.");
-            return;
-        }
-
-        if (sceneName == SceneName.Scene_Lobby)
-        {
-            SoundManager.Instance.PlayBGM(SoundManager.BGMType.MainMenu);
-        }
-        else if (sceneName == SceneName.Scene_Game)
-        {
-            SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
-        }
-
-        // 이미 로딩 중인지 확인
-        if (_sceneLoadHandle.IsValid() && !_sceneLoadHandle.IsDone)
-        {
-            Debug.LogWarning("Scene is already loading.");
-            return;
-        }
-
-        // Addressables 초기화 여부 확인
         if (!_isAdreessableInitializeComplete)
         {
             Debug.LogError("Addressables not initialized yet.");
             return;
         }
 
-        string sceneAddress = _sceneBaseAddress + sceneName.ToString() + ".unity";
+        string sceneAddress = _sceneBaseAddress + SceneName.Scene_Loading + ".unity";
 
-        LoadingSceneManager.Instance.ShowUI();
-        _sceneLoadHandle = Addressables.LoadSceneAsync(sceneAddress, LoadSceneMode.Additive);
+        _loadingSceneHandle = Addressables.LoadSceneAsync(sceneAddress, LoadSceneMode.Single);
 
-
-        // 콜백함수 등록
-        _sceneLoadHandle.Completed += OnSceneLoadCompleted;
-    }
-
-
-    /// <summary>
-    /// 로딩 씬은 타이틀에서 한번만 로드
-    /// </summary>
-    public static void LoadAddressableLoadingScene()
-    {
-        string sceneAddress = _sceneBaseAddress + SceneName.Scene_Loading.ToString() + ".unity";
-        _sceneLoadHandle = Addressables.LoadSceneAsync(sceneAddress, LoadSceneMode.Single);
-
-        _sceneLoadHandle.Completed += handle =>
+        _loadingSceneHandle.Completed += handle =>
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 Debug.Log("Loading scene loaded successfully.");
+
                 LoadAddressableScene(SceneName.Scene_Lobby);
             }
             else
@@ -142,35 +108,111 @@ public class LoadingSystem
         };
     }
 
-
     /// <summary>
-    /// 씬 로드 완료 콜백
+    /// 로비/게임씬 전환용.
+    /// LoadingScene은 건드리지 않는다.
     /// </summary>
-    /// <param name="handle"></param>
-    private static void OnSceneLoadCompleted(AsyncOperationHandle<SceneInstance> handle)
+    public static void LoadAddressableScene(SceneName sceneName)
     {
-        if (handle.Status == AsyncOperationStatus.Succeeded)
+        if (!_isAdreessableInitializeComplete)
         {
-            // 로드 성공 시
-            Debug.Log("Scene loaded successfully.");
+            Debug.LogError("Addressables not initialized yet.");
+            return;
+        }
+
+        if (_isChangingScene)
+        {
+            Debug.LogWarning("Scene is already changing.");
+            return;
+        }
+
+        if (!IsContentScene(sceneName))
+        {
+            Debug.LogError($"Invalid content scene name: {sceneName}");
+            return;
+        }
+
+        if (LoadingSceneManager.Instance == null)
+        {
+            Debug.LogError("LoadingSceneManager.Instance is null.");
+            return;
+        }
+
+        LoadingSceneManager.Instance.StartCoroutine(ChangeContentScene(sceneName));
+    }
+
+    static IEnumerator ChangeContentScene(SceneName nextScene)
+    {
+        _isChangingScene = true;
+
+        LoadingSceneManager.Instance.ShowUI();
+
+        // 현재 게임씬이면 ECS SubScene 먼저 언로드
+        if (_currentContentScene == SceneName.Scene_Game)
+        {
+            if (SubSceneLoader.Instance != null)
+            {
+                SubSceneLoader.Instance.UnloadSubScene();
+            }
+        }
+
+        // 기존 로비/게임 Addressables 씬 언로드
+        if (_contentSceneHandle.IsValid())
+        {
+            AsyncOperationHandle<SceneInstance> unloadHandle = Addressables.UnloadSceneAsync(_contentSceneHandle, true);
+
+            yield return unloadHandle;
+
+            _contentSceneHandle = default;
+            _currentContentScene = SceneName.None;
+        }
+
+        // 3. BGM 변경
+        PlaySceneBGM(nextScene);
+
+        // 4. 새 로비/게임씬 Additive 로드
+        string sceneAddress = _sceneBaseAddress + nextScene + ".unity";
+
+        _contentSceneHandle = Addressables.LoadSceneAsync(sceneAddress, LoadSceneMode.Additive);
+
+        yield return _contentSceneHandle;
+
+        if (_contentSceneHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            _currentContentScene = nextScene;
+
+            Debug.Log($"Content scene loaded successfully: {nextScene}");
+
             _onSceneLoadCompleted?.Invoke();
         }
         else
         {
-            // 로드 실패 시
-            Debug.LogError("Failed to load scene.");
+            Debug.LogError($"Failed to load content scene: {nextScene}");
         }
+
+        LoadingSceneManager.Instance.HideUI();
+
+        _isChangingScene = false;
     }
 
-
-    /// <summary>
-    /// 이전 씬 언로드
-    /// </summary>
-    public static void UnloadCurrentScene()
+    static bool IsContentScene(SceneName sceneName)
     {
-        if (_sceneLoadHandle.IsValid())
+        return sceneName == SceneName.Scene_Lobby ||
+               sceneName == SceneName.Scene_Game;
+    }
+
+    static void PlaySceneBGM(SceneName sceneName)
+    {
+        if (SoundManager.Instance == null)
+            return;
+
+        if (sceneName == SceneName.Scene_Lobby)
         {
-            Addressables.UnloadSceneAsync(_sceneLoadHandle);
+            SoundManager.Instance.PlayBGM(SoundManager.BGMType.MainMenu);
+        }
+        else if (sceneName == SceneName.Scene_Game)
+        {
+            SoundManager.Instance.PlayBGM(SoundManager.BGMType.Gameplay);
         }
     }
 }

@@ -18,6 +18,10 @@ public class InteractionUIManager : SingletonGameobject<InteractionUIManager>
     {
         _pauseController.Initialize();
 
+        GameFlowManager.Instance.SubscribeGameState(GameFlowManager.GameState.Ready, () =>
+        {
+            _joystickInput.IsPaused = true;
+        });
         GameFlowManager.Instance.SubscribeGameState(GameFlowManager.GameState.Pause, () =>
         {
             _joystickInput.IsPaused = true;
@@ -46,7 +50,6 @@ public class InteractionUIManager : SingletonGameobject<InteractionUIManager>
 
     public void GoToLobby()
     {
-        LoadingSystem.UnloadCurrentScene();
         LoadingSystem.LoadAddressableScene(LoadingSystem.SceneName.Scene_Lobby);
     }
 }
