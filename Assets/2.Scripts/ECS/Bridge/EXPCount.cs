@@ -8,4 +8,9 @@ public static class EXPCount
     {
         Exp = exp;
     }
+
+    public static void Reset()
+    {
+        Exp = 0;
+    }
 }

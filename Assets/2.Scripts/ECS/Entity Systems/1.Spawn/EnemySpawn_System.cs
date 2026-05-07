@@ -92,8 +92,6 @@ partial struct EnemySpawn_System : ISystem
         // 마지막에 적용
         ecb.Playback(state.EntityManager);
         ecb.Dispose();
-
-        EnemyCount.SetCount(_enemyQuery.CalculateEntityCount());
     }
 
 }

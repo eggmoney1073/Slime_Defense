@@ -8,4 +8,9 @@ public static class KillCount
     {
         Kill = kill;
     }
+
+    public static void Reset()
+    {
+        Kill = 0;
+    }
 }

@@ -34,7 +34,7 @@ public class LoadingSceneManager : SingletonGameobject<LoadingSceneManager>
     {
         SetRandomBG();
         _fadeOutCallBack = fadeOutCallBack;
-        StartCoroutine(Co_FadeIn(0.5f));
+        StartCoroutine(Co_SetLoadingBar());
         _canvasGroup.blocksRaycasts = true;
         //_eventSystem.SetActive(true);
     }

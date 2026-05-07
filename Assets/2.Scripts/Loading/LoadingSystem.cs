@@ -122,10 +122,7 @@ public class LoadingSystem
         // 게임씬에서 나갈 때 ECS SubScene 먼저 언로드
         if (_currentContentScene == SceneName.Scene_Game)
         {
-            if (SubSceneLoader.Instance != null)
-            {
-                SubSceneLoader.Instance.UnloadSubScene();
-            }
+            yield return EcsWorldResetter.ResetDefaultWorldRoutine();
         }
 
         // 기존 컨텐츠 씬 언로드 완료까지 대기

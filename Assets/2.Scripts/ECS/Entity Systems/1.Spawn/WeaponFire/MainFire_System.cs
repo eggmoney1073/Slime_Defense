@@ -80,7 +80,5 @@ partial struct MainFire_System : ISystem
 
         ecb.Playback(state.EntityManager);
         ecb.Dispose();
-        int allProjectileCount = _projectileQuery.CalculateEntityCount();
-        ProjectileCount.SetCount(allProjectileCount);
     }
 }

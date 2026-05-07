@@ -3,7 +3,7 @@ using Unity.Entities.Serialization;
 using Unity.Scenes;
 using UnityEngine;
 
-public class SubSceneLoader : SingletonGameobject<SubSceneLoader>
+public class SubSceneController : SingletonGameobject<SubSceneController>
 {
     [SerializeField] EntitySceneReference _sceneReference;
 
@@ -14,8 +14,9 @@ public class SubSceneLoader : SingletonGameobject<SubSceneLoader>
     {
         _world = World.DefaultGameObjectInjectionWorld;
 
-        if (_world == null)
+        if (_world == null || !_world.IsCreated)
         {
+            Debug.LogError("ECS World 없음");
             return;
         }
 
