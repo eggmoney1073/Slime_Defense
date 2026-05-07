@@ -24,7 +24,6 @@ partial struct EnemySpawn_System : ISystem
         TimeScaleData timeData = SystemAPI.GetSingleton<TimeScaleData>();
         float deltaTime = timeData.scaledDeltaTime;
 
-        // path 안전하게 가져오기
         if (!SystemAPI.TryGetSingletonEntity<PathTag>(out Entity pathEntity))
         {
             return;
@@ -37,35 +36,39 @@ partial struct EnemySpawn_System : ISystem
             return;
         }
 
-        // 버퍼 생성
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+
+        bool hasSpawner = false;
+        bool isAllSpawnFinished = true;
 
         foreach (RefRW<EnemySpawner> spawner in SystemAPI.Query<RefRW<EnemySpawner>>())
         {
+            hasSpawner = true;
+
             if (spawner.ValueRO.spawnCount < spawner.ValueRO.maxSpawnCount)
             {
+                isAllSpawnFinished = false;
+
                 spawner.ValueRW.timer += deltaTime;
 
                 if (spawner.ValueRO.timer >= spawner.ValueRO.spawnInterval)
                 {
                     spawner.ValueRW.timer = 0f;
 
-                    // Entity 생성 (ECB)
                     Entity enemy = ecb.Instantiate(spawner.ValueRO.enemyPrefab);
 
                     float3 spawnPos = waypoints[0].nodePosition;
                     spawnPos.z += _spawnIndex * 0.001f;
 
-                    // 위치 설정
                     ecb.SetComponent(enemy, LocalTransform.FromPosition(spawnPos));
 
                     ecb.AddComponent(enemy, new EntityIndex
                     {
                         index = _spawnIndex
                     });
+
                     _spawnIndex++;
 
-                    // Path 연결
                     ecb.AddComponent(enemy, new ECS_PathReference
                     {
                         path = pathEntity
@@ -81,17 +84,22 @@ partial struct EnemySpawn_System : ISystem
                     spawner.ValueRW.spawnCount += 1;
                 }
             }
-            else if (!isClear)
+        }
+
+        ecb.Playback(state.EntityManager);
+        ecb.Dispose();
+
+        if (!isClear && hasSpawner && isAllSpawnFinished)
+        {
+            int aliveEnemyCount = _enemyQuery.CalculateEntityCount();
+
+            if (aliveEnemyCount == 0)
             {
-                Entity clearEntity = ecb.CreateEntity();
-                ecb.AddComponent<GameClearEvent>(clearEntity);
+                Entity clearEntity = state.EntityManager.CreateEntity();
+                state.EntityManager.AddComponent<GameClearEvent>(clearEntity);
+
                 isClear = true;
             }
         }
-
-        // 마지막에 적용
-        ecb.Playback(state.EntityManager);
-        ecb.Dispose();
     }
-
 }
