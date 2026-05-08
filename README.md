@@ -18,8 +18,8 @@
 
 | 항목 | 링크 |
 |------|------|
-| 플레이 영상 | 준비 중 |
-| 플레이 파일 다운로드 | 준비 중 |
+| 플레이 영상 | https://www.youtube.com/watch?v=FuFSvaY_o_8&t=170s |
+| 플레이 파일 다운로드 | https://github.com/eggmoney1073/Slime_Defense/releases/tag/v1.0.0 |
 
 <br/>
 
