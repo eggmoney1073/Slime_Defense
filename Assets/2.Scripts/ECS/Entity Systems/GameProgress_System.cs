@@ -42,7 +42,6 @@ partial struct GameProgress_System : ISystem
 
         // 킬 계산
         int kills = progress.ValueRO.kill;
-        KillCount.SetKill(kills);
 
         // 레벨업 계산
         int levelUpsThisFrame = 0;

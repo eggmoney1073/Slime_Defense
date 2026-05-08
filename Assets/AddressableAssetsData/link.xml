@@ -8,14 +8,11 @@
     <type fullname="Enemy_Authoring" preserve="all" />
     <type fullname="Enemy_PathMaker" preserve="all" />
     <type fullname="EnemySpawner_Authoring" preserve="all" />
-    <type fullname="EntityDebugDrawer" preserve="all" />
     <type fullname="FillingUI" preserve="all" />
     <type fullname="GameClearWindow" preserve="all" />
     <type fullname="GameFlowManager" preserve="all" />
     <type fullname="GameOverWindow" preserve="all" />
-    <type fullname="Grid_Authoring" preserve="all" />
     <type fullname="InGamePauseController" preserve="all" />
-    <type fullname="InputManager" preserve="all" />
     <type fullname="InteractionUIManager" preserve="all" />
     <type fullname="JoystickInput" preserve="all" />
     <type fullname="LevelUpController" preserve="all" />
@@ -40,7 +37,6 @@
     <type fullname="StageController" preserve="all" />
     <type fullname="StageDatabase" preserve="all" />
     <type fullname="SubSceneController" preserve="all" />
-    <type fullname="Test_Authoring" preserve="all" />
     <type fullname="TimeCount_Mono" preserve="all" />
     <type fullname="TimeManager" preserve="all" />
     <type fullname="TimeScaler" preserve="all" />
@@ -111,6 +107,7 @@
     <type fullname="UnityEngine.Material" preserve="all" />
     <type fullname="UnityEngine.MeshFilter" preserve="all" />
     <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.RectTransform" preserve="all" />
     <type fullname="UnityEngine.RenderSettings" preserve="all" />

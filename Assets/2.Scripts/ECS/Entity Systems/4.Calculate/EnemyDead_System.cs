@@ -4,7 +4,6 @@ using Unity.Entities;
 [WithAll(typeof(EnemyTag))]
 partial struct EnemyDead_System : ISystem
 {
-    [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         EntityCommandBuffer ecb = new EntityCommandBuffer(Unity.Collections.Allocator.TempJob);
@@ -21,6 +20,7 @@ partial struct EnemyDead_System : ISystem
                 liveTag.ValueRW = false;
 
                 progress.ValueRW.kill += 1;
+                KillCount.AddKill(1);
 
                 ecb.AppendToBuffer(soundBufferEntity, new SoundRequest
                 {
