@@ -27,22 +27,4 @@ public class SubSceneController : SingletonGameobject<SubSceneController>
 
         _loadedSceneEntity = SceneSystem.LoadSceneAsync(_world.Unmanaged, _sceneReference, loadParameters);
     }
-
-    public void UnloadSubScene()
-    {
-        if (_world == null || !_world.IsCreated)
-        {
-            _loadedSceneEntity = Entity.Null;
-            return;
-        }
-
-        EntityManager entityManager = _world.EntityManager;
-
-        if (_loadedSceneEntity != Entity.Null && entityManager.Exists(_loadedSceneEntity))
-        {
-            SceneSystem.UnloadScene(_world.Unmanaged, _loadedSceneEntity, SceneSystem.UnloadParameters.DestroyMetaEntities);
-        }
-
-        _loadedSceneEntity = Entity.Null;
-    }
 }
