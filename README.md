@@ -1,184 +1,269 @@
-# 🟢 슬라임 디펜스 (Slime Defense)
+# 슬라임 디펜스 (Slime Defense)
 
-> Unity ECS(DOTS) 기반 모바일 타워 디펜스 게임  
-> 1인 개발 | 뱀파이어 서바이버 스타일 성장형 디펜스
-
-<br/>
-
-## 📌 프로젝트 소개
-
-왕국을 침공하는 슬라임 무리를 막는 초급 마법사 이야기.  
-플레이어는 중앙에 고정된 채 무기를 획득하고 성장하며, **5분 동안 생존**하면 승리합니다.
-
-Unity **ECS / DOTS** 구조를 실제 게임에 적용하고 검증하는 것을 핵심 목표로 개발하였습니다.
+> Unity ECS(DOTS) 기반 모바일 성장형 디펜스 게임  
+> 1인 개발 | Android 빌드 완료 | 2026.05.07 완성
 
 <br/>
 
-## 🎮 게임 플레이
+## 프로젝트 소개
+
+**슬라임 디펜스**는 모바일 환경을 기준으로 제작한 성장형 디펜스 게임입니다.  
+플레이어는 중앙에 고정된 상태로 자동 전투를 진행하고, 전투 중 경험치를 획득해 레벨업 보상을 선택하며 성장합니다.
+
+이 프로젝트는 Unity ECS/DOTS를 실제 게임 구조에 적용하고, 다수의 적과 투사체가 동시에 처리되는 상황에서 성능과 구조를 검증하는 것을 목표로 제작했습니다.
+
+<br/>
+
+## 링크
+
+| 항목 | 링크 |
+|------|------|
+| 플레이 영상 | 준비 중 |
+| 플레이 파일 다운로드 | 준비 중 |
+
+<br/>
+
+## 게임 정보
 
 | 항목 | 내용 |
 |------|------|
-| 플랫폼 | 모바일 (Android / iOS) |
-| 장르 | 타워 디펜스 + 서바이벌 성장형 |
-| 플레이 인원 | 1인 오프라인 |
-| 1판 플레이 타임 | 약 5분 |
-| 시점 | 탑뷰 고정 시점 |
+| 플랫폼 | Android |
+| 장르 | 디펜스 + 서바이벌 성장형 |
+| 개발 인원 | 1인 개발 |
+| 개발 기간 | 2026.03.22 ~ 2026.05.07 |
+| 플레이 방식 | 중앙 고정형 자동 전투 |
+| 클리어 조건 | 제한 시간 동안 생존 |
+| 실패 조건 | 플레이어 체력 소진 |
 
-**게임 루프**
-```
-전투 → 경험치 획득 → 레벨업(3지선다) → 강화 → 클리어 / 패배
+<br/>
+
+## 게임 루프
+
+```text
+전투 시작
+→ 적 웨이브 스폰
+→ 자동 전투 진행
+→ 경험치 획득
+→ 레벨업 보상 선택
+→ 능력 강화
+→ 제한 시간 생존 시 클리어 / 체력 소진 시 실패
 ```
 
 <br/>
 
-## 🛠️ 사용 기술
+## 사용 기술
 
 | 기술 | 용도 |
 |------|------|
 | Unity 6000.3.11f1 | 게임 엔진 |
-| Unity ECS / DOTS | 투사체·적 Entity 처리 (고성능 병렬 처리) |
-| Addressables | 씬·에셋 비동기 로딩, 원격 빌드 |
-| Unity Input System | 조이스틱·터치 입력 처리 |
-| URP (Universal Render Pipeline) | 2D 스프라이트 렌더링 |
+| C# | 게임 로직 구현 |
+| Unity ECS / DOTS | 적, 투사체, 충돌 처리 |
+| Unity Entities | Entity / Component / System 구조 구현 |
+| Burst Compiler | ECS Job 최적화 |
+| Job System | 대량 Entity 병렬 처리 |
+| Addressables | 씬 및 에셋 비동기 로딩 |
+| Unity Input System | 모바일 입력 처리 |
+| URP | 2D 렌더링 |
 
 <br/>
 
-## 📁 프로젝트 구조
+## 프로젝트 구조
 
-```
+```text
 Assets/
-├── 1.Scenes/               # 씬 파일 (Title, MainMenu, Game, Loading)
+├── 1.Scenes/                  # Bootstrap, Loading, Game, SubScene
 ├── 2.Scripts/
 │   ├── ECS/
-│   │   ├── Authorings/     # MonoBehaviour → Entity 변환 (Baker)
-│   │   ├── Bakers/         # Baker 구현체
-│   │   ├── Bridge/         # ECS ↔ Mono 데이터 브릿지
-│   │   ├── Entity Structs/ # IComponentData 구조체 정의
-│   │   └── Entity Systems/ # ISystem 구현체
-│   │       ├── 1.Spawn/    # 적·무기 스폰
-│   │       ├── 2.Move/     # 이동 Job
-│   │       ├── 3.Judgement/# 충돌 판정 (Grid 기반)
-│   │       ├── 4.Calculate/# 데미지 계산·생존 체크
-│   │       └── 5.Dead/     # Entity 제거
-│   ├── Loading/            # Addressables 씬 로딩 시스템
-│   ├── DownLoad/           # 원격 에셋 다운로드 관리
-│   ├── Input/              # 입력 핸들러 (InGame / UI)
-│   ├── UI/                 # UI MonoBehaviour (카운터 표시 등)
-│   └── Utility/            # ObjectPool, Singleton 유틸
-├── 3.InputSystem/          # Input Action Asset
-├── 4.Prefabs/              # 프리팹 (Enemy, Weapon, UI 등)
-└── AddressableAssetsData/  # Addressables 설정
+│   │   ├── Authorings/        # MonoBehaviour → Entity 변환용 Authoring
+│   │   ├── Bakers/            # Baker 구현
+│   │   ├── Bridge/            # ECS ↔ MonoBehaviour 연결
+│   │   ├── Entity Structs/    # IComponentData / BufferElementData 정의
+│   │   └── Entity Systems/    # ECS System 구현
+│   │       ├── 1.Spawn/       # 적, 무기, 투사체 생성
+│   │       ├── 2.Move/        # 적/투사체 이동
+│   │       ├── 3.Judgement/   # Grid 기반 충돌 판정
+│   │       ├── 4.Calculate/   # 데미지, 관통, 생존 계산
+│   │       └── 5.Dead/        # Entity 제거 처리
+│   ├── Loading/               # Addressables 씬 로딩, SubScene 로딩
+│   ├── DownLoad/              # Addressables 다운로드 관리
+│   ├── Input/                 # 입력 처리
+│   ├── UI/                    # 게임 UI
+│   └── Utility/               # Singleton, ObjectPool 등 공통 유틸
+├── 3.InputSystem/             # Input Action Asset
+├── 4.Prefabs/                 # 게임 프리팹
+└── AddressableAssetsData/     # Addressables 설정
 ```
 
 <br/>
 
-## ⚙️ ECS 시스템 플로우
+## ECS 시스템 흐름
 
-```
-SlimeDefenseSystemGroup (SimulationSystemGroup 하위)
+```text
+SlimeDefenseSystemGroup
 │
-├── SpawnSystemGroup        ← EnemySpawn, WeaponSpawn, ManualFire
-├── MoveSystemGroup         ← EnemyMove, ProjectileMove
-├── JudgementSystemGroup    ← Grid 기반 Collision 판정
-├── CalculateSystemGroup    ← EnemyDamaged, ProjectileLiveCheck, EnemyDead
-└── DestroySystemGroup      ← EntityDestroy (LiveTag 비활성 Entity 제거)
-```
-
-**충돌 처리 방식**: 공간을 Grid로 분할하여 `NativeParallelMultiHashMap`으로 적 위치를 관리, 투사체와의 충돌을 병렬 Job으로 처리합니다.
-
-<br/>
-
-## 🗓️ MVP 개발 일정
-
-> 시작일: 2026.03.22 | 예정 기간: 8주 → **실제 핵심 시스템 2주 완성**
-
-| 상태 | 작업 | 기간 | 완료일 |
-|------|------|------|--------|
-| ✅ | Addressables 구조 설계 및 씬 로딩 시스템 | 4일 (03.22 ~ 03.25) | 2026.03.25 |
-| ✅ | 플레이어 조준 · 투사체 발사 | 2일 (03.26 ~ 03.27) | 2026.03.27 |
-| ✅ | 적 스폰 · 웨이포인트 이동 | 1일 (03.28) | 2026.03.28 |
-| ✅ | 충돌 · 데미지 · 사망 처리 | 7일 (03.29 ~ 04.04) | 2026.04.04 |
-| ✅ | 경험치 · 레벨업 · 3지선다 UI | 13일 (04.10 ~ 04.22) | 2026.04.22 |
-| ✅ | 타이머 · 승리/패배 처리 | 5일 (04.22 ~ 04.26) | 2026.04.26 |
-| 🔲 | 강화 시스템 · 상점 UI | - | - |
-| 🔲 | UI 폴리싱 · 사운드 · 최적화 · 광고 부활 | - | - |
-
-<br/>
-
-## 🧩 주요 구현 내용
-
-### ECS 투사체 처리
-- `ProjectileTag`, `LifetimeData`, `PierceData` 컴포넌트로 투사체 수명·관통 관리
-- `IJobEntity`를 활용한 Burst 컴파일 병렬 이동 처리
-- `IEnableableComponent` (LiveTag) 기반 소프트 삭제 → 프레임 말 일괄 제거
-
-### Addressables 씬 관리
-- 씬 전환은 모두 Addressables를 통해 비동기 로드
-- 원격 서버 빌드 지원 (Remote BuildPath / LoadPath 설정)
-- 초기 실행 시 다운로드 크기 체크 후 사용자에게 안내
-
-### Grid 기반 충돌 시스템
-- 매 프레임 적 위치를 `NativeParallelMultiHashMap<int, Entity>`에 기록
-- 투사체 주변 셀만 조회하여 O(n) 충돌 탐색 최소화
-- 명중 시 `Damaged` 동적 버퍼에 데미지 누적 → 다음 시스템에서 일괄 계산
-
-<br/>
-
-## 📦 빌드 환경
-
-```
-Unity       : 6000.3.11f1
-Render Pipeline : URP
-Target Platform : Android / iOS
-ECS Package : com.unity.entities
-Addressables : com.unity.addressables
-Input System : com.unity.inputsystem
+├── SpawnSystemGroup
+│   └── 적 스폰, 무기 발사, 투사체 생성
+│
+├── MoveSystemGroup
+│   └── 적 이동, 투사체 이동
+│
+├── JudgementSystemGroup
+│   └── Grid 기반 충돌 판정
+│
+├── CalculateSystemGroup
+│   └── 데미지 계산, 투사체 관통 체크, 생존 상태 처리
+│
+└── DestroySystemGroup
+    └── 비활성 Entity 제거
 ```
 
 <br/>
 
-## 👤 개발자
+## 주요 구현 내용
 
-1인 개발 프로젝트  
-그래픽: AI 이미지 생성 활용  
-사운드: 무료 에셋 사용
+### 1. ECS 기반 적/투사체 처리
+
+- 적과 투사체를 Entity로 관리
+- `EnemyTag`, `ProjectileTag`, `LiveTag` 등 태그 컴포넌트로 처리 대상 구분
+- `LiveTag`를 이용해 비활성 Entity를 즉시 삭제하지 않고 프레임 말에 일괄 제거
+- 다수의 적과 투사체 이동을 ECS System과 Job으로 처리
 
 <br/>
 
-## 📝 개발 회고
+### 2. Grid 기반 충돌 처리
 
-> 개발하면서 겪은 문제와 해결 과정을 기록합니다.
+- 매 프레임 적 위치를 Grid Cell에 등록
+- `NativeParallelMultiHashMap<int, Entity>`를 사용해 Cell별 적 Entity 관리
+- 투사체는 전체 적을 검사하지 않고 주변 Cell만 확인
+- 충돌 시 적의 `Damaged` Buffer에 데미지 누적
+- 데미지 계산 시스템에서 누적 데미지를 한 번에 처리
 
-- [✅] ECS와 Addressables 동시 사용 시 SubScene 로드 타이밍 이슈
-
-        - SubScene Loader를 사용
-
-- [✅] Burst Compile 조건에서 static 접근 제한
-
-        - Burst Compile 을 제거한 코드에서 static 사용
-
-- [✅] Entity의 Render Sort 가 무작위로 정렬되는 이슈
-
-        - Entity의 Position을 카메라 기준으로 정렬
-
-- [✅] 삭제 예정 Entity를 DeadTag의 활성화로 구현하려고 했지만 Spawner Job에서 Tag 비활성화가 어려움
-
-        - IEnableComponent는 생성과 동시에 활성화 되기 때문에 LiveTag로 전환하여 해결
-
-- [✅] Enemy의 Damage 처리를 투사체에서 Damage를 버퍼에 Add 하는데, 여러 투사체에서 Add를 병렬 처리하다가 동시에 참조하는 문제
-
-        - 투사체에선 Damage Add Request를 하고 Damage System에서 병렬로 Add하는 것으로 변경
-        
 <br/>
 
-## 📸 스크린샷
+### 3. Addressables 기반 씬 로딩
+
+- 게임 씬을 Addressables로 비동기 로드
+- Loading Scene을 유지하면서 Game Scene을 교체하는 구조 사용
+- ECS SubScene은 별도 Entity Scene으로 관리
+- Android 빌드에서 Addressables와 Entity Scene 포함 관계를 검증
+
+<br/>
+
+### 4. 레벨업 선택 시스템
+
+- 전투 중 경험치 획득
+- 레벨업 시 3개의 보상 후보 표시
+- 선택한 보상에 따라 능력 강화
+- 전투 흐름을 끊지 않도록 UI와 게임 상태를 분리하여 처리
+
+<br/>
+
+## 문제 발생 및 해결
+
+### 1. SubScene / Entity Scene이 APK에 포함되지 않는 문제
+
+**문제 상황**  
+Editor에서는 ECS SubScene이 정상적으로 동작했지만, Android APK 빌드 후 실행하면 ECS 데이터가 로드되지 않는 문제가 발생했습니다.
+
+**원인**  
+메인 게임 씬을 Addressables로 로드하고 있었기 때문에, 씬 안에서 사용하는 ECS SubScene의 Entity Scene 파일이 APK 빌드에 포함되지 않았습니다.  
+즉, Addressables 씬 로딩과 ECS Entity Scene 빌드 포함 처리가 서로 별도로 동작하는 구조였습니다.
+
+**해결 방법**  
+빌드에 항상 포함되는 Bootstrap Scene에서 SubScene을 직접 참조하도록 구조를 변경했습니다.  
+그 결과 Android 빌드 시 Entity Scene 데이터가 함께 포함되었고, 실제 APK 실행 환경에서도 ECS 데이터가 정상적으로 로드되었습니다.
+
+```text
+문제:
+Addressables Game Scene 안의 SubScene 참조만으로는 Entity Scene이 APK에 포함되지 않음
+
+해결:
+Bootstrap Scene에서 SubScene을 직접 참조
+
+결과:
+APK 빌드에 Entity Scene 데이터가 포함되어 Android 실기기에서 정상 로드
+```
+
+<br/>
+
+### 2. 대량 적/투사체 충돌 누락 문제
+
+**문제 상황**  
+적과 투사체가 많아질수록 일부 투사체 충돌이 누락되거나, 투사체가 설정된 관통 수보다 많은 적을 통과하는 문제가 발생했습니다.
+
+**원인**  
+처음에는 Grid Buffer 용량 부족을 의심했지만, 실제 적 수보다 Buffer 용량이 충분했기 때문에 원인이 아니었습니다.  
+분석 결과, 렌더링 정렬에 사용하는 좌표 기준과 충돌 판정에 사용하는 좌표 기준이 섞여 충돌 거리가 잘못 계산되는 문제가 있었습니다.
+
+**해결 방법**  
+렌더링 정렬용 좌표와 충돌 판정용 좌표를 분리했습니다.  
+또한 모든 적을 직접 검사하는 방식 대신 Grid 기반 공간 분할 구조를 적용해, 투사체 주변 Cell에 있는 적만 충돌 후보로 검사하도록 변경했습니다.
+
+```text
+문제:
+투사체가 실제 설정된 관통 수보다 많은 적을 통과하거나 충돌이 누락됨
+
+원인:
+렌더링 정렬 기준과 충돌 판정 기준이 섞여 충돌 거리 계산이 어긋남
+
+해결:
+렌더링 좌표와 충돌 좌표 분리
+Grid 기반 공간 분할로 주변 Cell만 검사
+
+결과:
+충돌 판정 안정성 개선
+대량 적/투사체 상황에서도 불필요한 전체 탐색 감소
+```
+
+<br/>
+
+## 빌드 환경
+
+```text
+Unity              : 6000.3.11f1
+Target Platform    : Android
+Scripting Backend  : IL2CPP
+Architecture       : ARM64
+Render Pipeline    : URP
+ECS Package        : com.unity.entities
+Addressables       : com.unity.addressables
+Input System       : com.unity.inputsystem
+```
+
+<br/>
+
+## 스크린샷
 
 > 인게임 스크린샷
 
-![스크린샷1](ScreenShot/Caputre1.png) ![스크린샷2](ScreenShot/Caputre2.png)
+![스크린샷1](ScreenShot/Caputre1.png)
+![스크린샷2](ScreenShot/Caputre2.png)
+
+<br/>
+
+## 개발 정보
+
+| 항목 | 내용 |
+|------|------|
+| 개발 형태 | 1인 개발 |
+| 담당 범위 | 기획, 프로그래밍, ECS 구조 설계, Addressables 로딩, Android 빌드 |
+| 그래픽 | AI 이미지 생성 및 무료 리소스 활용 |
+| 사운드 | 무료 에셋 활용 |
+
+<br/>
+
+## 개발 목적
+
+이 프로젝트는 단순한 기능 구현보다, Unity ECS/DOTS를 실제 모바일 게임 구조에 적용하면서 다음 내용을 검증하는 것을 목표로 했습니다.
+
+- ECS 기반 대량 Entity 처리
+- Grid 기반 충돌 최적화
+- Addressables와 ECS SubScene의 빌드 구조 검증
+- Android 실기기 빌드 및 실행
+- MonoBehaviour UI와 ECS 로직의 역할 분리
 
 <br/>
 
 ---
 
-> 본 프로젝트는 Unity ECS/DOTS를 실전 게임에 적용하여 구조와 성능을 검증하는 것을 목적으로 합니다.
+> 본 프로젝트는 Unity ECS/DOTS를 실제 게임에 적용하며, 모바일 환경에서 대량 Entity 처리 구조와 Addressables 기반 씬 로딩 구조를 검증하기 위해 제작되었습니다.
