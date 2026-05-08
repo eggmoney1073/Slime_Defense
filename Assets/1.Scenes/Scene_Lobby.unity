@@ -490,7 +490,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 82.7
+  m_fontSize: 80.6
   m_fontSizeBase: 149.16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1601,7 +1601,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 110}
-  m_SizeDelta: {x: 0, y: -380}
+  m_SizeDelta: {x: 80, y: -380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1676607088
 CanvasRenderer:
@@ -2059,8 +2059,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.0913086, y: 412.21136}
-  m_SizeDelta: {x: -430.4607, y: -1183.4314}
+  m_AnchoredPosition: {x: 1.0913086, y: 465.21658}
+  m_SizeDelta: {x: -430.4607, y: -1339.6572}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123678149
 MonoBehaviour:
@@ -2109,7 +2109,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 79.7
+  m_fontSize: 93.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
